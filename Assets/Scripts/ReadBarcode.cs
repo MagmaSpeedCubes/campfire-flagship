@@ -7,9 +7,8 @@ public class ReadBarcode : MonoBehaviour
     [HideInInspector] public static ReadBarcode Instance;
 
     [SerializeField] private InputField _InputField;
-    [SerializeField] private string LastText;
 
-    [SerializeField] private UnityEvent<string> OnBarcodeScanned;
+    [SerializeField] public UnityEvent<string> OnBarcodeScanned;
 
     
 
@@ -41,21 +40,10 @@ public class ReadBarcode : MonoBehaviour
         _InputField.text = string.Empty;
     }
 
-    private void WhatItemWasScanned(string text)
+    public void OnTextChanged(string text)
     {
+        if (text.Length < 12) return;
         OnBarcodeScanned.Invoke(text);
-
-        switch (text)
-        {
-            case "049000061062":
-                Debug.Log("You scanned a can of Sprite!");
-                break;
-            case "889392021394":
-                Debug.Log("You scanned a can of Celsius!");
-                break;
-            default:
-                Debug.Log("Unknown item scanned.");
-                break;
-        }
+        _InputField.text = string.Empty;
     }
 }
