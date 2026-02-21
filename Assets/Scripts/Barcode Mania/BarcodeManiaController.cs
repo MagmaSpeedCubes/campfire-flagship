@@ -20,7 +20,11 @@ public class BarcodeManiaController : MonoBehaviour
         SpawnedItems = new List<GameObject>();
         for (int i = 0; i < NumberOfItemsToSpawn; i++)
         {
-            GameObject item = Instantiate(ScannableItemPrefab);
+            Vector3 basePos = transform.position;
+            float offsetX = Random.Range(-1f, 1f);
+            float offsetY = Random.Range(-1f, 1f);
+            Vector3 spawnPos = new Vector3(basePos.x + offsetX, basePos.y + offsetY, basePos.z);
+            GameObject item = Instantiate(ScannableItemPrefab, spawnPos, Quaternion.identity);
             ScannableItemController controller = item.GetComponent<ScannableItemController>();
             controller.SetScannableItem(_ScannableItems[i % _ScannableItems.Length]);
             SpawnedItems.Add(item);
