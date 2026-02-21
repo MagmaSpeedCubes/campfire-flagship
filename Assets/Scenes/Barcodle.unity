@@ -2383,10 +2383,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ------------
+  m_text: '|1|2|B|A|R|C|O|D|E|9|0|'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aef1b6e0028374533917cf75346b1538, type: 2}
-  m_sharedMaterial: {fileID: 5505072182454322686, guid: aef1b6e0028374533917cf75346b1538, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

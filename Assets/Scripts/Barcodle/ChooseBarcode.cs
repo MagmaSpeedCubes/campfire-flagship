@@ -7,7 +7,7 @@ public class ChooseBarcode : MonoBehaviour
     [SerializeField] TMP_Text chosenBarcodeText;
     [SerializeField] Button confirmButton;
 
-    const string placeholder = "--Bar-code--";
+    const string placeholder = "|1|2|B|A|R|C|O|D|E|9|0|";
 
     public string ChosenBarcode => chosenBarcodeText.text;
 
