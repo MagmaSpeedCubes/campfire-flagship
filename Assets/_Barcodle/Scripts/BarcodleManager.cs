@@ -14,22 +14,19 @@ public class BarcodleManager : MonoBehaviour
     [SerializeField] GameObject placements;
     [SerializeField] int[] playerAttempts;
     int currentGuessingPlayer = 0;
-    List<int> guessingPlayersPool;
-    List<int> choosingPlayersPool;
+    List<int> playersPool;
+    int randomOffset;
 
     public int[] PlayerAttempts => playerAttempts;
 
     private void Awake()
     {
+        randomOffset = Random.Range(1 - GameState.numPlayers, GameState.numPlayers - 1);
         playerAttempts = new int[GameState.numPlayers];
 
-        guessingPlayersPool = new(GameState.numPlayers);
-        choosingPlayersPool = new(GameState.numPlayers);
+        playersPool = new(GameState.numPlayers);
         for (int i = 0; i < GameState.numPlayers; i++)
-        {
-            guessingPlayersPool.Add(i);
-            choosingPlayersPool.Add(i);
-        }
+            playersPool.Add(i);
     }
 
     private void Start()
@@ -56,7 +53,7 @@ public class BarcodleManager : MonoBehaviour
         foreach (GameObject obj in disableOnStart)
             obj.SetActive(false);
 
-        if (guessingPlayersPool.Count == 0 || choosingPlayersPool.Count == 0)
+        if (playersPool.Count == 0)
         {
             placements.SetActive(true);
             return;
@@ -68,15 +65,14 @@ public class BarcodleManager : MonoBehaviour
 
     void RollPlayers()
     {
-        currentGuessingPlayer = guessingPlayersPool[Random.Range(0, guessingPlayersPool.Count)];
-        guessingPlayersPool.Remove(currentGuessingPlayer);
+        currentGuessingPlayer = playersPool[Random.Range(0, playersPool.Count)];
+        playersPool.Remove(currentGuessingPlayer);
 
-        List<int> currentChoosingPlayersPool = new(choosingPlayersPool);
-        currentChoosingPlayersPool.Remove(currentGuessingPlayer);
-
-        int choosingPlayer = currentChoosingPlayersPool[Random.Range(0, currentChoosingPlayersPool.Count)];
-        choosingPlayersPool.Remove(choosingPlayer);
-
+        int choosingPlayer = currentGuessingPlayer + randomOffset;
+        if (choosingPlayer < 0)
+            choosingPlayer += GameState.numPlayers;
+        if (choosingPlayer > GameState.numPlayers - 1)
+            choosingPlayer -= GameState.numPlayers;
 
         UpdateInstructionText(choosingPlayer);
     }
