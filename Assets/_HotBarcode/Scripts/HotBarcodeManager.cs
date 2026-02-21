@@ -20,6 +20,7 @@ public class HotBarcodeManager : MonoBehaviour
     [SerializeField] private AudioClip success, failure, win, loss;
     [SerializeField] private AudioClip backgroundMusic;
     [SerializeField] private UIBar timerBar;
+    [SerializeField] private string MenuSceneName;
 
     private void Awake()
     {
@@ -98,7 +99,12 @@ public class HotBarcodeManager : MonoBehaviour
         AudioSource asc = GetComponent<AudioSource>();
         asc.Stop();
         asc.PlayOneShot(win);
-
+        StartCoroutine(WaitAndGoToMenu());
+        IEnumerator WaitAndGoToMenu()
+        {
+            yield return new WaitForSeconds(5f);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(MenuSceneName);
+        }
     }
 
     public void OnBarcodeFound(string text)
