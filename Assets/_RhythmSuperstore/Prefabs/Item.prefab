@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5356239538482014096}
-  - component: {fileID: 1012338270989681779}
+  - component: {fileID: 2475681913353578418}
   - component: {fileID: 6454320880373044705}
   - component: {fileID: 504740563400770129}
   - component: {fileID: 772358163316658562}
@@ -35,7 +35,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &1012338270989681779
+--- !u!70 &2475681913353578418
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,8 +70,8 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
-  m_Direction: 0
+  m_Size: {x: 1, y: 0.5}
+  m_Direction: 1
 --- !u!50 &6454320880373044705
 Rigidbody2D:
   serializedVersion: 5
@@ -170,6 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df57f7710a2c3944d867d33bfacd0bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _SpriteRenderer: {fileID: 0}
-  _Collider: {fileID: 0}
+  _SpriteRenderer: {fileID: 504740563400770129}
+  _Collider: {fileID: 2475681913353578418}
   _Item: {fileID: 0}
