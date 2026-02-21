@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScannableItem
   Name: Cherry Coca-Cola
   Barcode: 49000072303
-  Image: {fileID: 622891427340393763, guid: 929f33d444db34a09bb8d803d6864ccb, type: 3}
+  Image: {fileID: 21300000, guid: 929f33d444db34a09bb8d803d6864ccb, type: 3}
   Radius: 1

@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdaecfd77912bd8459bc7664636c0877, type: 3}
+  m_Script: {fileID: 11500000, guid: 39cb3384bf2663f429c08c279ee20d40, type: 3}
   m_Name: CherryCocaCola
-  m_EditorClassIdentifier: Assembly-CSharp::ScannableItem
-  Name: Cherry Coca-Cola
+  m_EditorClassIdentifier: Assembly-CSharp::RhythmSuperstore_Item
   Barcode: 49000072303
-  Image: {fileID: 21300000, guid: f5983443f6b905844bc898b5e57c6c35, type: 3}
-  Radius: 1
+  Image: {fileID: 21300000, guid: 929f33d444db34a09bb8d803d6864ccb, type: 3}
+  Size: {x: 0.5, y: 1}
