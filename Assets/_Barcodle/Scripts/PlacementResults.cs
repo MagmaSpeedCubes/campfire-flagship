@@ -55,7 +55,7 @@ public class PlacementResults : MonoBehaviour
                     }
 
 
-                    winnerText.text += $"Player(s) {winnnersIndexes}: {kvp.Key} Att.";
+                    winnerText.text += $"Player(s) {winnnersIndexes}: {kvp.Key} Attempts";
                 }
 
                 if (kvp.Key == 1)
@@ -79,7 +79,7 @@ public class PlacementResults : MonoBehaviour
             runnerup.text = $"Player(s) {runnerupsIndexes}: ";
             runnerup.text += kvp.Key < inputAttempt.MaxAttempts
                 ? $"{kvp.Key} attempts"
-                : "50+ (Failed) :(";
+                : "50+ attempts (Failed) :(";
         }
     }
 }
