@@ -99,12 +99,6 @@ public class HotBarcodeManager : MonoBehaviour
         AudioSource asc = GetComponent<AudioSource>();
         asc.Stop();
         asc.PlayOneShot(win);
-        StartCoroutine(WaitAndGoToMenu());
-        IEnumerator WaitAndGoToMenu()
-        {
-            yield return new WaitForSeconds(5f);
-            UnityEngine.SceneManagement.SceneManager.LoadScene(MenuSceneName);
-        }
     }
 
     public void OnBarcodeFound(string text)
