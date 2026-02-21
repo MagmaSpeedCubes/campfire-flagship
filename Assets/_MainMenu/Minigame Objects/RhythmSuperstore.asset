@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7a9b0f53be392f48ba0c3d54f29e415, type: 3}
-  m_Name: HotBarcode
+  m_Name: RhythmSuperstore
   m_EditorClassIdentifier: Assembly-CSharp::Minigame
-  Name: Hot Barcode
-  Description: Scan the biggest barcode to win.
-  SceneName: HotBarcode
-  Thumbnail: {fileID: 1661606163436851444, guid: 42cb0e6a2252149d3b5dd6584d892841, type: 3}
+  Name: Rythm Superstore
+  Description: Scan as many of the items as possible.
+  SceneName: RhythmSuperstore_Game
+  Thumbnail: {fileID: 21300000, guid: a642bf693afe22a4c934e59614107a2e, type: 3}

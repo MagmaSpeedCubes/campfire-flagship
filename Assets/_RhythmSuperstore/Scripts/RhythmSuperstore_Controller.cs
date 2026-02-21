@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class RhythmSuperstore_Controller : MonoBehaviour
 {
@@ -7,9 +9,11 @@ public class RhythmSuperstore_Controller : MonoBehaviour
     [SerializeField] private List<RhythmSuperstore_Item> _Items;
     [SerializeField] private GameObject ItemPrefab;
     [SerializeField] private Transform SpawnPosition;
+    [SerializeField] private Text _Text;
  
     [Header("Settings")]
-    [SerializeField] private float SpawnInterval;
+    [SerializeField] private int AmountToSpawn;
+    [SerializeField] private string EndSceneName;
 
     [Header("Debug")]
     [SerializeField] private List<GameObject> SpawnedItems;
@@ -19,22 +23,14 @@ public class RhythmSuperstore_Controller : MonoBehaviour
     private void Start()
     {
         ReadBarcode.Instance.OnBarcodeScanned.AddListener(OnItemScanned);
+        SpawnAllItems();
     }
 
     private void Update()
     {
         CheckForDeletedItems();
-        HandleSpawning();
-    }
-
-    private void HandleSpawning()
-    {
-        SpawnCounter -= Time.deltaTime;
-        if (SpawnCounter <= 0)
-        {
-            SpawnCounter = SpawnInterval;
-            SpawnItem();
-        }
+        UpdateIUI();
+        if (SpawnedItems.Count <= 0) GameOverCondition();
     }
 
     private void CheckForDeletedItems()
@@ -51,7 +47,6 @@ public class RhythmSuperstore_Controller : MonoBehaviour
     public void OnItemScanned(string barcode)
     {
         Camera mainCamera = Camera.main;
-        // First, try to scan items visible in camera
         foreach (GameObject item in SpawnedItems)
         {
             if (item == null) continue;
@@ -67,7 +62,6 @@ public class RhythmSuperstore_Controller : MonoBehaviour
                 return;
             }
         }
-        // If not found, fallback to any item
         foreach (GameObject item in SpawnedItems)
         {
             if (item == null) continue;
@@ -82,12 +76,29 @@ public class RhythmSuperstore_Controller : MonoBehaviour
         }
     }
 
-    private void SpawnItem()
+    private void UpdateIUI()
     {
-        GameObject itemObj = Instantiate(ItemPrefab, SpawnPosition.position, Quaternion.identity, transform);
-        RhythmSuperstore_ItemController controller = itemObj.GetComponent<RhythmSuperstore_ItemController>();
-        int randIndex = Random.Range(0, _Items.Count);
-        controller.SetItem(_Items[randIndex]);
-        SpawnedItems.Add(itemObj);
+        _Text.text = $"Score: {Score}/{AmountToSpawn}";
+    }
+
+    private void SpawnAllItems()
+    {
+        SpawnedItems.Clear();
+        for (int i = 0; i < AmountToSpawn; i++)
+        {
+            int randIndex = Random.Range(0, _Items.Count);
+            Vector3 randomOffset = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
+            GameObject itemObj = Instantiate(ItemPrefab, SpawnPosition.position + randomOffset, Quaternion.identity, transform);
+            RhythmSuperstore_ItemController controller = itemObj.GetComponent<RhythmSuperstore_ItemController>();
+            controller.SetItem(_Items[randIndex]);
+            SpawnedItems.Add(itemObj);
+        }
+    }
+
+    private void GameOverCondition()
+    {
+        RhythmSuperstore_GameData.Instance.Got = Score;
+        RhythmSuperstore_GameData.Instance.OutOf = AmountToSpawn;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(EndSceneName);
     }
 }
