@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class ReadBarcode : MonoBehaviour
 {
@@ -18,14 +18,18 @@ public class ReadBarcode : MonoBehaviour
         _InputField = GetComponent<InputField>();
     }
 
-    private void Update()
+    public void OnTextChanged(string text)
     {
-        if(LastText != _InputField.text && _InputField.text.Length == 12)
+        if (text.Length < 12)
+            return;
+
+        if (LastText != text)
         {
-            WhatItemWasScanned(_InputField.text);
-            _InputField.text = string.Empty;
+            WhatItemWasScanned(text);
+            LastText = text;
         }
-        LastText = _InputField.text;
+
+        _InputField.text = string.Empty;
     }
 
     private void WhatItemWasScanned(string text)
