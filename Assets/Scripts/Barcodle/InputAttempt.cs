@@ -9,6 +9,9 @@ public class InputAttempt : MonoBehaviour
 
     public void AddAttempt(string attempt)
     {
+        if (!isActiveAndEnabled)
+            return;
+
         TMP_Text newAttempt = Instantiate(attemptPrefab, scrollViewContent);
         newAttempt.text = answerCheck.Check(attempt);
     }

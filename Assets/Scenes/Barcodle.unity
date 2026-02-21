@@ -684,6 +684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1027210734}
   - component: {fileID: 1027210735}
+  - component: {fileID: 1027210736}
   m_Layer: 5
   m_Name: Choose Word
   m_TagString: Untagged
@@ -739,6 +740,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1027210736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027210733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5bffd59ed9a3884b955483d035b9c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputBarcodeAnswer
+  chosenBarcodeText: {fileID: 1992555005}
 --- !u!1 &1080890791
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,8 +850,8 @@ RectTransform:
   - {fileID: 563429012}
   - {fileID: 706330570}
   - {fileID: 1887726646}
-  - {fileID: 1612565222}
   - {fileID: 1027210734}
+  - {fileID: 1612565222}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1286,6 +1300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7480d5b32f9bb8144b0ff95be18811b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WordleCheck
+  answer: 
+  inputBarcode: {fileID: 1027210736}
 --- !u!1 &1786933727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,7 +1384,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1786933730}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1027210733}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1612565221}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1786933730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1886,14 +1926,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
       propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
       propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1612565226}
     - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1027210736}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
       propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
@@ -1901,12 +1949,40 @@ PrefabInstance:
       value: AddAttempt
       objectReference: {fileID: 0}
     - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetChosenBarcode
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
       propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: InputAttempt, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ChooseBarcode, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
       propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5736707022641448633, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5736707022641448633, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5736707022641448633, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5736707022641448633, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ReadBarcode, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5895361263742754771, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
       propertyPath: m_Pivot.x

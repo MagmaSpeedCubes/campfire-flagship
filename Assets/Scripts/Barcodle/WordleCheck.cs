@@ -1,15 +1,18 @@
+using EditorAttributes;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class WordleCheck : MonoBehaviour
 {
-    const string testAnswer = "012345678901";
+    [SerializeField][DisableInPlayMode] string answer;
+    [SerializeField] ChooseBarcode inputBarcode;
     char[] answerDigits;
 
     private void Awake()
     {
-        answerDigits = testAnswer.ToCharArray();
+        answer = inputBarcode.ChosenBarcode;
+        answerDigits = answer.ToCharArray();
     }
 
     public string Check(string attempt)
