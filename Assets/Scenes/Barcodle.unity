@@ -1329,8 +1329,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b543f6424699c48a80864c5a42d6f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BarcodleManager
+  startingScreen: {fileID: 1027210733}
+  disableOnStart:
+  - {fileID: 1612565221}
+  - {fileID: 187779619}
   statusText: {fileID: 187779619}
-  newRoundDelay: 2.5
+  newRoundDelay: 5
+  inputAttempt: {fileID: 1612565226}
 --- !u!4 &1424042190
 Transform:
   m_ObjectHideFlags: 0

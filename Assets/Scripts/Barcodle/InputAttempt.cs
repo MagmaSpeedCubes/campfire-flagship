@@ -31,9 +31,23 @@ public class InputAttempt : MonoBehaviour
     void Increment()
     {
         attempts++;
-        attemptCountText.text = $"Attempts: {attempts}/{maxAttempts} Max";
+        UpdateAttemptsText();
 
         if (attempts >= maxAttempts)
             gameManager.DisplayStatus("Failed! Too many attempts. :(", Color.firebrick, attempts);
+    }
+
+    void UpdateAttemptsText()
+    {
+        attemptCountText.text = $"Attempts: {attempts}/{maxAttempts} Max";
+    }
+
+    public void NewRound()
+    {
+        foreach (Transform child in scrollViewContent)
+            Destroy(child.gameObject);
+
+        attempts = 0;
+        UpdateAttemptsText();
     }
 }

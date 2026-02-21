@@ -8,17 +8,13 @@ public class BarcodleManager : MonoBehaviour
     [SerializeField] GameObject[] disableOnStart;
     [SerializeField] GameObject statusText;
     [SerializeField] float newRoundDelay;
+    [SerializeField] InputAttempt inputAttempt;
     int playerIndex = 0;
     int[] playerAttempts;
 
     private void Awake()
     {
         playerAttempts = new int[GameState.numPlayers];
-    }
-
-    private void Start()
-    {
-        NewRound();
     }
 
     public void DisplayStatus(string text, Color color, int attemptCount)
@@ -35,6 +31,7 @@ public class BarcodleManager : MonoBehaviour
 
     void NewRound()
     {
+        inputAttempt.NewRound();
         playerIndex++;
 
         foreach (GameObject obj in disableOnStart)
