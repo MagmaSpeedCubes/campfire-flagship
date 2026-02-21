@@ -47,6 +47,8 @@ public class InputAttempt : MonoBehaviour
 
     public void NewRound()
     {
+        answerCheck.ReEnableBackground();
+
         foreach (Transform child in scrollViewContent)
             Destroy(child.gameObject);
 

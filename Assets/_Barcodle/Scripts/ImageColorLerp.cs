@@ -14,7 +14,7 @@ public class ImageColorLerp : MonoBehaviour
         image = GetComponent<Image>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(LerpColors());
     }
