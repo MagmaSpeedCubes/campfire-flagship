@@ -15,4 +15,4 @@ MonoBehaviour:
   Name: Barcodemania
   Description: Scan items from real life to remove them from ingame as fast as possible.
   SceneName: BarcodeMania_Game
-  Thumbnail: {fileID: 21300000, guid: a642bf693afe22a4c934e59614107a2e, type: 3}
+  Thumbnail: {fileID: 21300000, guid: 4caf8e3503e3f2743ad688a83f993213, type: 3}
