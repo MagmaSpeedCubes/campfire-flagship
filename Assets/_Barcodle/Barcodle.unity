@@ -1531,7 +1531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf59dff2ae1ddcc468e6cedef6a55560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlacementResults
-  runnerupPrefab: {fileID: 8655621191875966970, guid: c7dcd32c6fc01374593cd6d7c318c9d0, type: 3}
+  runnerupPrefab: {fileID: 5272149608603848035, guid: c7dcd32c6fc01374593cd6d7c318c9d0, type: 3}
   winnerText: {fileID: 100419599}
   gameManager: {fileID: 1424042189}
   inputAttempt: {fileID: 1612565226}
