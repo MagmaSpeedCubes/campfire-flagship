@@ -11,6 +11,7 @@ public class ScannableItemController : MonoBehaviour
     [SerializeField] private float minPushInterval = 1f;
     [SerializeField] private float maxPushInterval = 3f;
     [SerializeField] private float pushMagnitude = 0.5f;
+    [SerializeField] private bool enableFloating = true;
 
     private Rigidbody2D _rb;
     private float _nextPushTime;
@@ -18,18 +19,22 @@ public class ScannableItemController : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        if (_rb == null)
-            _rb = gameObject.AddComponent<Rigidbody2D>();
+        if (enableFloating)
+        {
+            if (_rb == null)
+                _rb = gameObject.AddComponent<Rigidbody2D>();
 
-        _rb.gravityScale = 0;
-        _rb.linearDamping = 0.5f;
+            _rb.gravityScale = 0;
+            _rb.linearDamping = 0.5f;
 
-        ApplyRandomPush();
-        ScheduleNextPush();
+            ApplyRandomPush();
+            ScheduleNextPush();
+        }
     }
 
     private void Update()
     {
+        if (!enableFloating || _rb == null) return;
         if (Time.time >= _nextPushTime)
         {
             ApplyRandomPush();
@@ -44,6 +49,7 @@ public class ScannableItemController : MonoBehaviour
 
     private void ApplyRandomPush()
     {
+        if (!enableFloating || _rb == null) return;
         Vector2 dir = Random.insideUnitCircle.normalized;
         _rb.AddForce(dir * pushMagnitude, ForceMode2D.Impulse);
     }
