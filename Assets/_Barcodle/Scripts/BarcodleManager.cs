@@ -21,7 +21,10 @@ public class BarcodleManager : MonoBehaviour
 
     private void Awake()
     {
-        randomOffset = Random.Range(1 - GameState.numPlayers, GameState.numPlayers - 1);
+        do
+            randomOffset = Random.Range(1 - GameState.numPlayers, GameState.numPlayers - 1);
+        while (randomOffset == 0);
+
         playerAttempts = new int[GameState.numPlayers];
 
         playersPool = new(GameState.numPlayers);
