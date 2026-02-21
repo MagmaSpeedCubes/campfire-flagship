@@ -8,7 +8,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class PlacementResults : MonoBehaviour
 {
-    [SerializeField] GameObject runnerupPrefab;
+    [SerializeField] TMP_Text runnerupPrefab;
     [SerializeField] TMP_Text winnerText;
     [SerializeField] BarcodleManager gameManager;
     [SerializeField] InputAttempt inputAttempt;
@@ -28,7 +28,7 @@ public class PlacementResults : MonoBehaviour
             if (!attemptsToPlayer.TryGetValue(attempts, out var playerIndexes))
             {
                 playerIndexes = new();
-                attemptsToPlayer[attempts] = playerIndexes; // Add the new list to the SortedList
+                attemptsToPlayer[attempts] = playerIndexes;
             }
             playerIndexes.Add(i + 1);
         }
@@ -55,7 +55,7 @@ public class PlacementResults : MonoBehaviour
                     }
 
 
-                    winnerText.text += $"Player(s) {winnnersIndexes}: {kvp.Key} Att.";
+                    winnerText.text += $"Player(s) {winnnersIndexes}: {kvp.Key} Attempts";
                 }
 
                 if (kvp.Key == 1)
@@ -75,8 +75,11 @@ public class PlacementResults : MonoBehaviour
                     runnerupsIndexes.Append(", ");
             }
 
-            GameObject runnerup = Instantiate(runnerupPrefab, transform);
-            runnerup.GetComponent<TMP_Text>().text = $"Player(s) {runnerupsIndexes}: {kvp.Key} attempts";
+            TMP_Text runnerup = Instantiate(runnerupPrefab, transform);
+            runnerup.text = $"Player(s) {runnerupsIndexes}: ";
+            runnerup.text += kvp.Key < inputAttempt.MaxAttempts
+                ? $"{kvp.Key} attempts"
+                : "50+ attempts (Failed) :(";
         }
     }
 }

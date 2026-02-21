@@ -13,7 +13,7 @@ public class InputAttempt : MonoBehaviour
 
     public void AddAttempt(string attempt)
     {
-        if (!isActiveAndEnabled)
+        if (!isActiveAndEnabled || !gameManager.IsPlayerGuessing)
             return;
 
         Increment();
@@ -21,13 +21,14 @@ public class InputAttempt : MonoBehaviour
         TMP_Text newAttempt = Instantiate(attemptPrefab, scrollViewContent);
         newAttempt.text = answerCheck.Check(attempt);
 
-        if (answerCheck.IsCorrect(attempt))
-        {
-            if (attempts == 1)
-                gameManager.DisplayStatus($"You solved the Barcodle in 1 attempt! CHEATER", Color.forestGreen, attempts);
-            else
-                gameManager.DisplayStatus($"You solved the Barcodle in {attempts} attempts!", Color.forestGreen, attempts);
-        }
+        if (!answerCheck.IsCorrect(attempt))
+            return;
+
+        if (attempts == 1)
+            gameManager.DisplayStatus($"You solved the Barcodle in 1 attempt! CHEATER", Color.forestGreen, attempts);
+        else
+            gameManager.DisplayStatus($"You solved the Barcodle in {attempts} attempts!", Color.forestGreen, attempts);
+
     }
 
     void Increment()
