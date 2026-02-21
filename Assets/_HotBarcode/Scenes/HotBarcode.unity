@@ -202,7 +202,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1056643614}
+      - m_Target: {fileID: 1056643616}
         m_TargetAssemblyTypeName: HotBarcodeManager, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -856,7 +856,7 @@ PrefabInstance:
     - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
       propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1056643614}
+      objectReference: {fileID: 0}
     - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
       propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1203,8 +1203,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1056643613}
-  - component: {fileID: 1056643614}
   - component: {fileID: 1056643615}
+  - component: {fileID: 1056643616}
   m_Layer: 0
   m_Name: HotBarcodeManager
   m_TagString: Untagged
@@ -1227,28 +1227,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2058546665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1056643614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1056643612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0f2e151b8dd04953a059d69eadece1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotBarcodeManager
-  roundTime: 60
-  objectiveText: {fileID: 292314141}
-  alertText: {fileID: 676531103}
-  timerText: {fileID: 140727207}
-  success: {fileID: 8300000, guid: 67967c79b89cf4aa2967e9ac08b8d03f, type: 3}
-  failure: {fileID: 8300000, guid: f28df188fc67443b5bf0973a003c38e5, type: 3}
-  win: {fileID: 8300000, guid: 42e6eec87629e4d9abd752fc78878525, type: 3}
-  loss: {fileID: 8300000, guid: 9a87d5d347c9c4250aaf5b45892cf2bf, type: 3}
-  backgroundMusic: {fileID: 8300000, guid: 0150cf9ceab714f82996cc0dca216614, type: 3}
-  timerBar: {fileID: 176410731}
 --- !u!82 &1056643615
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1346,6 +1324,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1056643616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056643612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d980096ead0289d4abcfac5d02c8a12e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HotBarcodeManager
+  roundTime: 60
+  objectiveText: {fileID: 292314141}
+  alertText: {fileID: 676531103}
+  timerText: {fileID: 140727207}
+  success: {fileID: 8300000, guid: 67967c79b89cf4aa2967e9ac08b8d03f, type: 3}
+  failure: {fileID: 8300000, guid: f28df188fc67443b5bf0973a003c38e5, type: 3}
+  win: {fileID: 8300000, guid: 42e6eec87629e4d9abd752fc78878525, type: 3}
+  loss: {fileID: 8300000, guid: 9a87d5d347c9c4250aaf5b45892cf2bf, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 0150cf9ceab714f82996cc0dca216614, type: 3}
+  timerBar: {fileID: 176410731}
 --- !u!1 &1080890791
 GameObject:
   m_ObjectHideFlags: 0
