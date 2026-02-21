@@ -234,8 +234,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: caa5c97a64b5c4ffe8ff3bfdad80c13f, type: 3}
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -365,10 +365,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 60s
+  m_text: 30s
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aef1b6e0028374533917cf75346b1538, type: 2}
-  m_sharedMaterial: {fileID: 5505072182454322686, guid: aef1b6e0028374533917cf75346b1538, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4da92a2565986da40bf8b7ef1070df51, type: 2}
+  m_sharedMaterial: {fileID: 5883703097612374614, guid: 4da92a2565986da40bf8b7ef1070df51, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -400,7 +400,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -497,7 +497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIBar
   barPrefab: {fileID: 176410732}
   min: 0
-  max: 60
+  max: 30
 --- !u!224 &176410732
 RectTransform:
   m_ObjectHideFlags: 0
@@ -545,8 +545,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 4f740587801414203bad15e2c03a5bfe, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -622,8 +622,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Objective: Find and scan the barcode with the largest digit sum'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aef1b6e0028374533917cf75346b1538, type: 2}
-  m_sharedMaterial: {fileID: 5505072182454322686, guid: aef1b6e0028374533917cf75346b1538, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4da92a2565986da40bf8b7ef1070df51, type: 2}
+  m_sharedMaterial: {fileID: 5883703097612374614, guid: 4da92a2565986da40bf8b7ef1070df51, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -751,8 +751,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aef1b6e0028374533917cf75346b1538, type: 2}
-  m_sharedMaterial: {fileID: 5505072182454322686, guid: aef1b6e0028374533917cf75346b1538, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4da92a2565986da40bf8b7ef1070df51, type: 2}
+  m_sharedMaterial: {fileID: 5883703097612374614, guid: 4da92a2565986da40bf8b7ef1070df51, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -776,13 +776,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 64
+  m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1097,8 +1097,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aef1b6e0028374533917cf75346b1538, type: 2}
-  m_sharedMaterial: {fileID: 5505072182454322686, guid: aef1b6e0028374533917cf75346b1538, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4da92a2565986da40bf8b7ef1070df51, type: 2}
+  m_sharedMaterial: {fileID: 5883703097612374614, guid: 4da92a2565986da40bf8b7ef1070df51, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1336,7 +1336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d980096ead0289d4abcfac5d02c8a12e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotBarcodeManager
-  roundTime: 60
+  roundTime: 30
   objectiveText: {fileID: 292314141}
   alertText: {fileID: 676531103}
   timerText: {fileID: 140727207}
@@ -1651,8 +1651,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Hot Barcode
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aef1b6e0028374533917cf75346b1538, type: 2}
-  m_sharedMaterial: {fileID: 5505072182454322686, guid: aef1b6e0028374533917cf75346b1538, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5b7876b6d7c9e8849a918ff2f07a9452, type: 2}
+  m_sharedMaterial: {fileID: 5505072182454322686, guid: 5b7876b6d7c9e8849a918ff2f07a9452, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
