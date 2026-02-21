@@ -1333,7 +1333,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1056643612}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: d980096ead0289d4abcfac5d02c8a12e, type: 3}
+=======
+  m_Script: {fileID: 11500000, guid: d0f2e151b8dd04953a059d69eadece1b, type: 3}
+>>>>>>> e74f1928d624149a2d23d5329f8202cda3c8c930
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HotBarcodeManager
   roundTime: 30
