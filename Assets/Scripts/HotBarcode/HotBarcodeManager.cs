@@ -35,6 +35,7 @@ public class HotBarcodeManager : MonoBehaviour
 
     public void StartGame()
     {
+
         gameActive = true;
         largestFound = 0;
         activePlayer = 0;
@@ -69,8 +70,8 @@ public class HotBarcodeManager : MonoBehaviour
 
             if(playersInGame.Count == 1)
             {
-                StartCoroutine(FlashMessage(alertText, Color.green, $"Player {playersInGame[0] + 1} wins!", win));
-                EndGame();
+                
+                EndGame(playersInGame[0] + 1);
             }
             else
             {
@@ -80,36 +81,43 @@ public class HotBarcodeManager : MonoBehaviour
         }
     }
 
-    public void EndGame()
+    public void EndGame(int winner)
     {
         gameActive = false;
-        objectiveText.text = "Game Over!";
+        objectiveText.text = "Game Over! Player " + (winner) + " wins with a score of " + largestFound + "";
         alertText.text = "";
         playersInGame.Clear();
+        GetComponent<AudioSource>().Stop();
     }
 
     public void OnBarcodeFound(string text)
     {
+        if(!gameActive) return;
+        Debug.Log(text);
         try
         {
-            int barcodeValue = int.Parse(text);
-            if(barcodeValue > largestFound)
-            {
-                StartCoroutine(FlashMessage(alertText, Color.green, $"Player {activePlayer + 1} found a new largest barcode: {barcodeValue}!", success));
+            long barcodeValue = long.Parse(text);
+            int barcodeScore = sumDigits(barcodeValue);
 
-                largestFound = barcodeValue;
-                objectiveText.text = $"Player {activePlayer + 1} objective: Find a larger barcode than {largestFound}";
+            if(barcodeScore > largestFound)
+            {
+                StartCoroutine(FlashMessage(alertText, Color.green, $"Player {activePlayer + 1} found a new largest barcode score: {barcodeValue} has a score of {barcodeScore}", success));
+
+                largestFound = barcodeScore;
                 activePlayer = (activePlayer + 1) % GameState.numPlayers;
                 timer = roundTime;
+                objectiveText.text = $"Player {activePlayer + 1} objective: Find a barcode with a score higher than {largestFound}";
+
+
             }
             else
             {
-                StartCoroutine(FlashMessage(alertText, Color.yellow, $"{barcodeValue} is not larger than {largestFound}. Try again!", failure));
+                StartCoroutine(FlashMessage(alertText, Color.yellow, $"{barcodeValue}'s score of {barcodeScore} is not larger than {largestFound}. Try again!", failure));
             }
             
         }catch(System.Exception e)
         {
-            StartCoroutine(FlashMessage(alertText, Color.red, "Invalid barcode!", failure));
+            StartCoroutine(FlashMessage(alertText, Color.red, $"{text} is not a valid barcode!", failure));
             return;
         }
         
@@ -122,6 +130,17 @@ public class HotBarcodeManager : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(clip);
         yield return new WaitForSeconds(2f);
         text.text = "";
+    }
+
+    int sumDigits(long number)
+    {
+        int sum = 0;
+        while (number > 0)
+        {
+            sum += (int)(number % 10);
+            number /= 10;
+        }
+        return sum;
     }
 
     
