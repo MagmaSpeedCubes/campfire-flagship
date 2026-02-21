@@ -2187,8 +2187,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Barcodle
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aef1b6e0028374533917cf75346b1538, type: 2}
-  m_sharedMaterial: {fileID: 5505072182454322686, guid: aef1b6e0028374533917cf75346b1538, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5b7876b6d7c9e8849a918ff2f07a9452, type: 2}
+  m_sharedMaterial: {fileID: 5505072182454322686, guid: 5b7876b6d7c9e8849a918ff2f07a9452, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
