@@ -19,6 +19,9 @@ public class ChooseBarcode : MonoBehaviour
 
     public void SetChosenBarcode(string barcode)
     {
+        if (!isActiveAndEnabled)
+            return;
+
         chosenBarcodeText.text = barcode;
 
         confirmButton.interactable = IsBarcodeValid(barcode);
