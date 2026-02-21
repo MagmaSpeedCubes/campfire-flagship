@@ -43,7 +43,13 @@ public class WordleCheck : MonoBehaviour
         {
             char attemptDigit = attempt[i];
 
-            if (coloredAttempt[i] != null || answerDigitCounts[attemptDigit] == 0 || !answerDigits.Contains(attemptDigit))
+            if (coloredAttempt[i] != null)
+                continue;
+
+            if (!answerDigitCounts.ContainsKey(attemptDigit) || answerDigitCounts[attemptDigit] == 0)
+                continue;
+
+            if (!answerDigits.Contains(attemptDigit))
                 continue;
 
             coloredAttempt[i] = ColorChar(attemptDigit, Color.gold);
