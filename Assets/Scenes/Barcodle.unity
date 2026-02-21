@@ -821,6 +821,7 @@ GameObject:
   - component: {fileID: 1612565225}
   - component: {fileID: 1612565224}
   - component: {fileID: 1612565226}
+  - component: {fileID: 1612565227}
   - component: {fileID: 1612565223}
   m_Layer: 5
   m_Name: Inputs
@@ -932,6 +933,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InputAttempt
   attemptPrefab: {fileID: 4466240020706164611, guid: 9251e0fb35b2cc74a8e4f85c46792829, type: 3}
   scrollViewContent: {fileID: 1528912955}
+  answerCheck: {fileID: 1612565227}
+--- !u!114 &1612565227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612565221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7480d5b32f9bb8144b0ff95be18811b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WordleCheck
 --- !u!1 &1858622109
 GameObject:
   m_ObjectHideFlags: 0
