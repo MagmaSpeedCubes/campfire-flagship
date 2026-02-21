@@ -32,7 +32,8 @@ public class BarcodeManiaController : MonoBehaviour
             Vector3 spawnPos = new Vector3(basePos.x + offsetX, basePos.y + offsetY, basePos.z);
             GameObject item = Instantiate(ScannableItemPrefab, spawnPos, Quaternion.identity, transform);
             ScannableItemController controller = item.GetComponent<ScannableItemController>();
-            controller.SetScannableItem(_ScannableItems[i % _ScannableItems.Length]);
+            int randIndex = Random.Range(0, _ScannableItems.Length);
+            controller.SetScannableItem(_ScannableItems[randIndex]);
             SpawnedItems.Add(item);
         }
     }
@@ -59,16 +60,22 @@ public class BarcodeManiaController : MonoBehaviour
     public void OnItemScanned(string barcode)
     {
         if(barcode.Length < 12) return;
-
-        foreach (GameObject item in SpawnedItems)
+        bool found = false;
+        for (int i = 0; i < SpawnedItems.Count; i++)
         {
+            GameObject item = SpawnedItems[i];
             ScannableItemController controller = item.GetComponent<ScannableItemController>();
             if (controller.GetScannableItem().Barcode == long.Parse(barcode))
             {
-                SpawnedItems.Remove(item);
+                SpawnedItems.RemoveAt(i);
                 Destroy(item);
-                return;
+                found = true;
+                break;
             }
+        }
+        if (!found)
+        {
+            TimeLimit -= 5f;
         }
     }
 

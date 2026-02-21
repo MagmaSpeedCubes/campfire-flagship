@@ -150,9 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   Minigames:
   - {fileID: 11400000, guid: e6ca7de497740cf4dafccaf617cd8a39, type: 2}
-  - {fileID: 11400000, guid: e6ca7de497740cf4dafccaf617cd8a39, type: 2}
-  - {fileID: 11400000, guid: e6ca7de497740cf4dafccaf617cd8a39, type: 2}
-  - {fileID: 11400000, guid: e6ca7de497740cf4dafccaf617cd8a39, type: 2}
+  - {fileID: 11400000, guid: 576be66ef93f1d84286d408ae1f5faf7, type: 2}
   MinigamePrefab: {fileID: 4338477943326313421, guid: c9de0fb4ca0fd7f49847c3d11e9e7a45, type: 3}
   Spacing: 4
   SideDepth: 2
