@@ -19,6 +19,7 @@ public class HotBarcodeManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI objectiveText, alertText, timerText;
     [SerializeField] private AudioClip success, failure, win, loss;
     [SerializeField] private AudioClip backgroundMusic;
+    [SerializeField] private UIBar timerBar;
 
     private void Awake()
     {
@@ -35,6 +36,7 @@ public class HotBarcodeManager : MonoBehaviour
 
     public void StartGame()
     {
+
         gameActive = true;
         largestFound = 0;
         activePlayer = 0;
@@ -60,17 +62,19 @@ public class HotBarcodeManager : MonoBehaviour
 
         timer -= Time.deltaTime;
         timerText.text = $"Time: {Mathf.Ceil(timer)}s";
+        timerBar.SetBarValue(Mathf.Ceil(timer));
         if(timer <= 0f)
         {
 
             StartCoroutine(FlashMessage(alertText, Color.red, $"Player {activePlayer + 1} ran out of time!", loss));
-            activePlayer = (activePlayer + 1) % GameState.numPlayers;
             playersInGame.Remove(activePlayer);
+            activePlayer = (activePlayer + 1) % GameState.numPlayers;
+            
 
             if(playersInGame.Count == 1)
             {
-                StartCoroutine(FlashMessage(alertText, Color.green, $"Player {playersInGame[0] + 1} wins!", win));
-                EndGame();
+                
+                EndGame(playersInGame[0] + 1);
             }
             else
             {
@@ -80,36 +84,45 @@ public class HotBarcodeManager : MonoBehaviour
         }
     }
 
-    public void EndGame()
+    public void EndGame(int winner)
     {
         gameActive = false;
-        objectiveText.text = "Game Over!";
+        objectiveText.text = "Game Over! Player " + (winner) + " wins with a score of " + largestFound + "";
         alertText.text = "";
         playersInGame.Clear();
+        GetComponent<AudioSource>().Stop();
     }
 
     public void OnBarcodeFound(string text)
     {
+        if(!gameActive) return;
+        Debug.Log(text);
         try
         {
-            int barcodeValue = int.Parse(text);
-            if(barcodeValue > largestFound)
-            {
-                StartCoroutine(FlashMessage(alertText, Color.green, $"Player {activePlayer + 1} found a new largest barcode: {barcodeValue}!", success));
+            long barcodeValue = long.Parse(text);
+            int barcodeScore = sumDigits(barcodeValue);
 
-                largestFound = barcodeValue;
-                objectiveText.text = $"Player {activePlayer + 1} objective: Find a larger barcode than {largestFound}";
+            if(barcodeScore > largestFound)
+            {
+                StartCoroutine(FlashMessage(alertText, Color.green, $"Player {activePlayer + 1} found a new largest barcode score: {barcodeValue} has a score of {barcodeScore}", success));
+
+                largestFound = barcodeScore;
                 activePlayer = (activePlayer + 1) % GameState.numPlayers;
                 timer = roundTime;
+                objectiveText.text = $"Player {activePlayer + 1} objective: Find a barcode with a score higher than {largestFound}";
+
+
             }
             else
             {
-                StartCoroutine(FlashMessage(alertText, Color.yellow, $"{barcodeValue} is not larger than {largestFound}. Try again!", failure));
+                StartCoroutine(FlashMessage(alertText, Color.yellow, $"{barcodeValue}'s score of {barcodeScore} is not larger than {largestFound}. Try again!", failure));
+                timer -= 5f; // Penalty for low score
             }
             
         }catch(System.Exception e)
         {
-            StartCoroutine(FlashMessage(alertText, Color.red, "Invalid barcode!", failure));
+            StartCoroutine(FlashMessage(alertText, Color.red, $"{text} is not a valid barcode!", failure));
+            timer -= 5f; // Penalty for invalid barcode
             return;
         }
         
@@ -120,11 +133,29 @@ public class HotBarcodeManager : MonoBehaviour
         text.text = content;
         text.color = color;
         GetComponent<AudioSource>().PlayOneShot(clip);
-        yield return new WaitForSeconds(2f);
-        text.text = "";
+        //yield return new WaitForSeconds(2f);
+        //text.text = "";
+        yield return null;
+    }
+
+    int sumDigits(long number)
+    {
+        int sum = 0;
+        while (number > 0)
+        {
+            sum += (int)(number % 10);
+            number /= 10;
+        }
+        return sum;
     }
 
     
 
 
+}
+
+public struct PlayerData
+{
+    public int playerNumber;
+    public long largestBarcodeValue;
 }

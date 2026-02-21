@@ -10,9 +10,35 @@ public class ReadBarcode : MonoBehaviour
 
     [SerializeField] public UnityEvent<string> OnBarcodeScanned;
 
+    
+
     private void Awake() => Instance = this;
 
-    private void Start() => _InputField = GetComponent<InputField>();
+    private void Start()
+    {
+        _InputField = GetComponent<InputField>();
+    }
+
+    
+
+    void Update()
+    {
+        _InputField.Select();
+    }
+
+    public void OnTextChanged(string text)
+    {
+        if (text.Length < 12)
+            return;
+
+        if (LastText != text)
+        {
+            WhatItemWasScanned(text);
+            LastText = text;
+        }
+
+        _InputField.text = string.Empty;
+    }
 
     public void OnTextChanged(string text)
     {
