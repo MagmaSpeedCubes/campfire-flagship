@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Minigame
   Name: Hot Barcode
   Description: Find the biggest barcode to win.
+<<<<<<< HEAD
   SceneName: Find The Highest
+=======
+  SceneName: HotBarcode
+>>>>>>> e117928bb1ca4ab4b18c490b0b7ae25a939a860a
   Thumbnail: {fileID: 1661606163436851444, guid: 42cb0e6a2252149d3b5dd6584d892841, type: 3}
