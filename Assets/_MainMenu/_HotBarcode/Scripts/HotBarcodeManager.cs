@@ -66,7 +66,7 @@ public class HotBarcodeManager : MonoBehaviour
 
 
         timer -= Time.deltaTime;
-        timerText.text = $"Time: {Mathf.Ceil(timer)}s";
+        timerText.text = $"{Mathf.Ceil(timer)}s";
         timerBar.SetBarValue(Mathf.Ceil(timer));
         if(timer <= 0f)
         {

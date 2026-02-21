@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScannableItem
   Name: Lays Barbecue
   Barcode: 28400008617
-  Image: {fileID: 21300000, guid: 87844bf309dc7434e92aa4f4b7d61c15, type: 3}
+  Image: {fileID: 5706700559929081447, guid: 733db71a04c494fcd8edca4057ef2161, type: 3}
   Radius: 1
