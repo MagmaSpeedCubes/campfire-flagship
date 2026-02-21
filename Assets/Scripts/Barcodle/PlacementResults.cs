@@ -55,7 +55,7 @@ public class PlacementResults : MonoBehaviour
                     }
 
 
-                    winnerText.text += $"Player {winnnersIndexes}: {kvp.Key} Att.";
+                    winnerText.text += $"Player(s) {winnnersIndexes}: {kvp.Key} Att.";
                 }
 
                 if (kvp.Key == 1)
@@ -76,7 +76,7 @@ public class PlacementResults : MonoBehaviour
             }
 
             GameObject runnerup = Instantiate(runnerupPrefab, transform);
-            runnerup.GetComponent<TMP_Text>().text = $"Player {runnerupsIndexes}: {kvp.Key} attempts";
+            runnerup.GetComponent<TMP_Text>().text = $"Player(s) {runnerupsIndexes}: {kvp.Key} attempts";
         }
     }
 }
