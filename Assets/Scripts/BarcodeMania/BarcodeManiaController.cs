@@ -33,7 +33,6 @@ public class BarcodeManiaController : MonoBehaviour
 
     public void OnItemScanned(string barcode)
     {
-        Debug.Log($"Scanned barcode: {barcode}");
         foreach (GameObject item in SpawnedItems)
         {
             ScannableItemController controller = item.GetComponent<ScannableItemController>();
