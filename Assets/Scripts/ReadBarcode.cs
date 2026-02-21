@@ -1,17 +1,15 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class ReadBarcode : MonoBehaviour
 {
     [HideInInspector] public static ReadBarcode Instance;
 
-    [Header("Events")]
-    [SerializeField] public UnityEvent<string> OnBarcodeScanned;
-
-    [Header("Debug")]
     [SerializeField] private InputField _InputField;
     [SerializeField] private string LastText;
+
+    [SerializeField] private UnityEvent<string> OnBarcodeScanned;
 
     private void Awake() => Instance = this;
 
@@ -20,14 +18,35 @@ public class ReadBarcode : MonoBehaviour
         _InputField = GetComponent<InputField>();
     }
 
-    private void Update()
+    public void OnTextChanged(string text)
     {
-        if(_InputField.text != LastText)
+        if (text.Length < 12)
+            return;
+
+        if (LastText != text)
         {
-            string barcode = _InputField.text.Length > 12 ? _InputField.text.Substring(_InputField.text.Length - 12) : _InputField.text;
-            OnBarcodeScanned.Invoke(barcode);
+            WhatItemWasScanned(text);
+            LastText = text;
         }
 
-        LastText = _InputField.text;
+        _InputField.text = string.Empty;
+    }
+
+    private void WhatItemWasScanned(string text)
+    {
+        OnBarcodeScanned.Invoke(text);
+
+        switch (text)
+        {
+            case "049000061062":
+                Debug.Log("You scanned a can of Sprite!");
+                break;
+            case "889392021394":
+                Debug.Log("You scanned a can of Celsius!");
+                break;
+            default:
+                Debug.Log("Unknown item scanned.");
+                break;
+        }
     }
 }
