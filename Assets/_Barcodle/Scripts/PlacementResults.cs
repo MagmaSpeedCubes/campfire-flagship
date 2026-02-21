@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
 
 public class PlacementResults : MonoBehaviour
@@ -12,11 +13,14 @@ public class PlacementResults : MonoBehaviour
     [SerializeField] TMP_Text winnerText;
     [SerializeField] BarcodleManager gameManager;
     [SerializeField] InputAttempt inputAttempt;
+    [SerializeField] float exitDelay;
+    [SerializeField] GameObject exitInfoText;
+    bool canExit = false;
 
     [Button("Calculate Placements", 36)]
     private void Start()
     {
-        for (int i = 1; i < transform.childCount; i++)
+        for (int i = 2; i < transform.childCount; i++)
             Destroy(transform.GetChild(i).gameObject);
 
         winnerText.text = "Winner(s):\n";
@@ -54,14 +58,11 @@ public class PlacementResults : MonoBehaviour
                             winnnersIndexes.Append(", ");
                     }
 
-
-                    winnerText.text += $"Player(s) {winnnersIndexes}: {kvp.Key} Attempts";
+                    if (kvp.Key == 1)
+                        winnerText.text += $"Player(s) {winnnersIndexes}: 1 Attempt (CHEATER(s))\n";
+                    else
+                        winnerText.text += $"Player(s) {winnnersIndexes}: {kvp.Key} Attempts\n";
                 }
-
-                if (kvp.Key == 1)
-                    winnerText.text += " (CHEATER)\n";
-                else
-                    winnerText.text += "\n";
 
                 continue;
             }
@@ -81,5 +82,21 @@ public class PlacementResults : MonoBehaviour
                 ? $"{kvp.Key} attempts"
                 : "50+ attempts (Failed) :(";
         }
+
+        Invoke(nameof(AllowExit), exitDelay);
+    }
+
+    void AllowExit()
+    {
+        canExit = true;
+        exitInfoText.SetActive(true);
+    }
+
+    public void Exit()
+    {
+        if (!isActiveAndEnabled || !canExit)
+            return;
+
+        SceneManager.LoadScene(0);
     }
 }
