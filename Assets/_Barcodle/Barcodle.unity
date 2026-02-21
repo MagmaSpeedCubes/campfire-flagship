@@ -1571,6 +1571,7 @@ MonoBehaviour:
   statusText: {fileID: 187779619}
   newRoundDelay: 5
   inputAttempt: {fileID: 1612565226}
+  instructionText: {fileID: 0}
   placements: {fileID: 1350053912}
   playerAttempts: 
 --- !u!4 &1424042190
