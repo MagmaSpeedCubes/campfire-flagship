@@ -9,5 +9,5 @@ public class ScannableItem : ScriptableObject
     public Sprite Image;
 
     [Header("Collider")]
-    public Vector2 Size;
+    public float Radius;
 }
