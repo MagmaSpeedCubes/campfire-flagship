@@ -15,4 +15,6 @@ public class RhythmSuperstore_ItemController : MonoBehaviour
         _SpriteRenderer.sprite = _Item.Image;
         _Collider.size = _Item.Size;
     }
+
+    public RhythmSuperstore_Item GetItem() => _Item;
 }
