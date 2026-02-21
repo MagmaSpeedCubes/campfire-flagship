@@ -16,8 +16,10 @@ public class BarcodleManager : MonoBehaviour
     int currentGuessingPlayer = 0;
     List<int> playersPool;
     int randomOffset;
+    bool isPlayerGuessing = true;
 
     public int[] PlayerAttempts => playerAttempts;
+    public bool IsPlayerGuessing => isPlayerGuessing;
 
     private void Awake()
     {
@@ -39,8 +41,14 @@ public class BarcodleManager : MonoBehaviour
 
     public void DisplayStatus(string text, Color color, int attemptCount)
     {
+        if (!IsPlayerGuessing)
+            return;
+
+        isPlayerGuessing = false;
+
         const float statusBarAlpha = 0.75f;
         color.a = statusBarAlpha;
+
         playerAttempts[currentGuessingPlayer] = attemptCount;
 
         statusText.GetComponentInChildren<TMP_Text>().text = text;
@@ -53,6 +61,7 @@ public class BarcodleManager : MonoBehaviour
 
     void NewRound()
     {
+        isPlayerGuessing = true;
         inputAttempt.NewRound();
 
         foreach (GameObject obj in disableOnStart)
