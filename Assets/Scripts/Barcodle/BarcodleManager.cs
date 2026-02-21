@@ -9,8 +9,11 @@ public class BarcodleManager : MonoBehaviour
     [SerializeField] GameObject statusText;
     [SerializeField] float newRoundDelay;
     [SerializeField] InputAttempt inputAttempt;
-    int playerIndex = 0;
-    int[] playerAttempts;
+    [SerializeField] GameObject placements;
+    [SerializeField] int[] playerAttempts;
+    int currentPlayer = 0;
+
+    public int[] PlayerAttempts => playerAttempts;
 
     private void Awake()
     {
@@ -19,7 +22,7 @@ public class BarcodleManager : MonoBehaviour
 
     public void DisplayStatus(string text, Color color, int attemptCount)
     {
-        playerAttempts[playerIndex] = attemptCount;
+        playerAttempts[currentPlayer] = attemptCount;
 
         statusText.GetComponentInChildren<TMP_Text>().text = text;
         statusText.GetComponent<Image>().color = color;
@@ -31,11 +34,17 @@ public class BarcodleManager : MonoBehaviour
 
     void NewRound()
     {
+        currentPlayer++;
         inputAttempt.NewRound();
-        playerIndex++;
 
         foreach (GameObject obj in disableOnStart)
             obj.SetActive(false);
+
+        if (currentPlayer >= playerAttempts.Length)
+        {
+            placements.SetActive(true);
+            return;
+        }
 
         startingScreen.SetActive(true);
     }

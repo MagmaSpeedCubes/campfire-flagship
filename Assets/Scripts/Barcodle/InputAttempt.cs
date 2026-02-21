@@ -9,6 +9,8 @@ public class InputAttempt : MonoBehaviour
     [SerializeField] WordleCheck answerCheck;
     [SerializeField] BarcodleManager gameManager;
 
+    public int MaxAttempts => maxAttempts;
+
     public void AddAttempt(string attempt)
     {
         if (!isActiveAndEnabled)
