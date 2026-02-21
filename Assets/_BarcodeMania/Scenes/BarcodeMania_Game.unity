@@ -5326,7 +5326,7 @@ MonoBehaviour:
   TimeText: {fileID: 1859781261}
   WinSceneName: BarcodeMania_Win
   LoseSceneName: BarcodeMania_Lose
-  NumberOfItemsToSpawn: 12
+  NumberOfItemsToSpawn: 20
   SpawnedItems: []
   TimeLimit: 60
 --- !u!4 &367813425
