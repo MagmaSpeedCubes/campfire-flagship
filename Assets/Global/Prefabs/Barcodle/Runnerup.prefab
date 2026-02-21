@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'P2: 19 Attempts'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aef1b6e0028374533917cf75346b1538, type: 2}
-  m_sharedMaterial: {fileID: 5505072182454322686, guid: aef1b6e0028374533917cf75346b1538, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4da92a2565986da40bf8b7ef1070df51, type: 2}
+  m_sharedMaterial: {fileID: 5883703097612374614, guid: 4da92a2565986da40bf8b7ef1070df51, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -92,12 +92,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 56
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 18
-  m_fontSizeMax: 36
+  m_fontSizeMin: 36
+  m_fontSizeMax: 56
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
