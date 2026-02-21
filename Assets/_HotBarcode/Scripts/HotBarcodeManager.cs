@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class HotBarcodeManager : MonoBehaviour
@@ -15,6 +16,7 @@ public class HotBarcodeManager : MonoBehaviour
     float timer = 0f;
     [SerializeField] private float roundTime = 60f;
     bool gameActive = false;
+    bool gameOver = false;
 
     [SerializeField] private TextMeshProUGUI objectiveText, alertText, timerText;
     [SerializeField] private AudioClip success, failure, win, loss;
@@ -37,6 +39,7 @@ public class HotBarcodeManager : MonoBehaviour
 
     private void Start()
     {
+        objectiveText.text = $"Scan anything to start";
         ReadBarcode.Instance.OnBarcodeScanned.AddListener(OnBarcodeFound);
     }
 
@@ -93,16 +96,23 @@ public class HotBarcodeManager : MonoBehaviour
     public void EndGame(int winner)
     {
         gameActive = false;
+        gameOver = true;
         objectiveText.text = "Game Over! Player " + (winner) + " wins with a score of " + largestFound + "";
-        alertText.text = "";
+        alertText.text = "Scan anything to return to menu";
         playersInGame.Clear();
         AudioSource asc = GetComponent<AudioSource>();
         asc.Stop();
         asc.PlayOneShot(win);
+
     }
 
     public void OnBarcodeFound(string text)
     {
+        if (gameOver)
+        {
+            SceneManager.LoadScene(MenuSceneName);
+            return;
+        }
         if (!gameActive)
         {
             StartGame();
