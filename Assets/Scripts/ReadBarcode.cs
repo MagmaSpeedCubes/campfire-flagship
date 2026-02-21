@@ -1,10 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ReadBarcode : MonoBehaviour
 {
+    [HideInInspector] public static ReadBarcode Instance;
+
     [SerializeField] private InputField _InputField;
     [SerializeField] private string LastText;
+
+    [SerializeField] private UnityEvent<string> OnBarcodeScanned;
+
+    private void Awake() => Instance = this;
 
     private void Start()
     {
@@ -23,6 +30,8 @@ public class ReadBarcode : MonoBehaviour
 
     private void WhatItemWasScanned(string text)
     {
+        OnBarcodeScanned.Invoke(text);
+
         switch (text)
         {
             case "049000061062":
