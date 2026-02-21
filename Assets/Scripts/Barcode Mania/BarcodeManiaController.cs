@@ -10,7 +10,7 @@ public class BarcodeManiaController : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private int NumberOfItemsToSpawn;
 
-    [Header("References")]
+    [Header("Debug")]
     [SerializeField] private List<GameObject> SpawnedItems;
 
     private void Start()
@@ -29,6 +29,7 @@ public class BarcodeManiaController : MonoBehaviour
 
     public void OnItemScanned(string barcode)
     {
+        Debug.Log($"Scanned barcode: {barcode}");
         foreach (GameObject item in SpawnedItems)
         {
             ScannableItemController controller = item.GetComponent<ScannableItemController>();

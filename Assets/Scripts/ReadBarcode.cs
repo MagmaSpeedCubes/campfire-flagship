@@ -6,10 +6,12 @@ public class ReadBarcode : MonoBehaviour
 {
     [HideInInspector] public static ReadBarcode Instance;
 
+    [Header("Events")]
+    [SerializeField] public UnityEvent<string> OnBarcodeScanned;
+
+    [Header("Debug")]
     [SerializeField] private InputField _InputField;
     [SerializeField] private string LastText;
-
-    [SerializeField] public UnityEvent<string> OnBarcodeScanned;
 
     private void Awake() => Instance = this;
 
@@ -20,11 +22,12 @@ public class ReadBarcode : MonoBehaviour
 
     private void Update()
     {
-        if(LastText != _InputField.text && _InputField.text.Length == 12)
+        if(_InputField.text != LastText)
         {
-            OnBarcodeScanned.Invoke(_InputField.text);
-            _InputField.text = string.Empty;
+            string barcode = _InputField.text.Length > 12 ? _InputField.text.Substring(_InputField.text.Length - 12) : _InputField.text;
+            OnBarcodeScanned.Invoke(barcode);
         }
+
         LastText = _InputField.text;
     }
 }
