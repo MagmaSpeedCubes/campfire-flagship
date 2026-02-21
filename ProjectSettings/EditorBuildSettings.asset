@@ -6,8 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/_MainMenu/Scenes/Master_Menu.unity
+    guid: 8e922e070396b5145922a1c0508fd9cf
+  - enabled: 1
+    path: Assets/_BarcodeMania/Scenes/BarcodeMania_Lose.unity
+    guid: 4b30875ba3ce4d845a69a4ba3847e834
+  - enabled: 1
+    path: Assets/_BarcodeMania/Scenes/BarcodeMania_Game.unity
+    guid: d24f7807305b69640a8cfaac1a4c661f
+  - enabled: 1
+    path: Assets/_BarcodeMania/Scenes/BarcodeMania_Win.unity
+    guid: 03f3706c93711a24eb154c92916ed8eb
+  - enabled: 1
+<<<<<<< HEAD
+    path: Assets/_HotBarcode/Scenes/HotBarcode.unity
+=======
+    path: Assets/Scenes/Hot Barcode.unity
+>>>>>>> rhythm-superstore
+    guid: 0e88780cfce9849ba9c33422c0f7bbe1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
