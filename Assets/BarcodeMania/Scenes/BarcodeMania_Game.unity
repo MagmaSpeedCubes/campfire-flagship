@@ -5320,10 +5320,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 54d2281af04f6cf48b12a7b6bc7afd80, type: 2}
   - {fileID: 11400000, guid: ce2136ff6e229784c800ca9928de1d1b, type: 2}
   - {fileID: 11400000, guid: 660efe9f7c4341347a6363688de18d2e, type: 2}
+  - {fileID: 11400000, guid: 6ee5a0c19672a014ba748553b8917d77, type: 2}
+  - {fileID: 11400000, guid: 4b19d1d50704d3d4a956379c96b6be06, type: 2}
+  - {fileID: 11400000, guid: 52fa81978d6117b428a1bbab8c931754, type: 2}
   TimeText: {fileID: 1859781261}
   WinSceneName: BarcodeMania_Win
   LoseSceneName: BarcodeMania_Lose
-  NumberOfItemsToSpawn: 15
+  NumberOfItemsToSpawn: 12
   SpawnedItems: []
   TimeLimit: 60
 --- !u!4 &367813425
