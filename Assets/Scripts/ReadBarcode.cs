@@ -11,11 +11,20 @@ public class ReadBarcode : MonoBehaviour
 
     [SerializeField] private UnityEvent<string> OnBarcodeScanned;
 
+    
+
     private void Awake() => Instance = this;
 
     private void Start()
     {
         _InputField = GetComponent<InputField>();
+    }
+
+    
+
+    void Update()
+    {
+        _InputField.Select();
     }
 
     public void OnTextChanged(string text)
@@ -34,7 +43,6 @@ public class ReadBarcode : MonoBehaviour
 
     private void WhatItemWasScanned(string text)
     {
-        Debug.Log($"Scanned barcode: {text}");
         OnBarcodeScanned.Invoke(text);
 
         switch (text)

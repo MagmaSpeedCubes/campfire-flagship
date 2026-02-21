@@ -19,6 +19,7 @@ public class HotBarcodeManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI objectiveText, alertText, timerText;
     [SerializeField] private AudioClip success, failure, win, loss;
     [SerializeField] private AudioClip backgroundMusic;
+    [SerializeField] private UIBar timerBar;
 
     private void Awake()
     {
@@ -61,12 +62,14 @@ public class HotBarcodeManager : MonoBehaviour
 
         timer -= Time.deltaTime;
         timerText.text = $"Time: {Mathf.Ceil(timer)}s";
+        timerBar.SetBarValue(Mathf.Ceil(timer));
         if(timer <= 0f)
         {
 
             StartCoroutine(FlashMessage(alertText, Color.red, $"Player {activePlayer + 1} ran out of time!", loss));
-            activePlayer = (activePlayer + 1) % GameState.numPlayers;
             playersInGame.Remove(activePlayer);
+            activePlayer = (activePlayer + 1) % GameState.numPlayers;
+            
 
             if(playersInGame.Count == 1)
             {
@@ -113,11 +116,13 @@ public class HotBarcodeManager : MonoBehaviour
             else
             {
                 StartCoroutine(FlashMessage(alertText, Color.yellow, $"{barcodeValue}'s score of {barcodeScore} is not larger than {largestFound}. Try again!", failure));
+                timer -= 5f; // Penalty for low score
             }
             
         }catch(System.Exception e)
         {
             StartCoroutine(FlashMessage(alertText, Color.red, $"{text} is not a valid barcode!", failure));
+            timer -= 5f; // Penalty for invalid barcode
             return;
         }
         
@@ -128,8 +133,9 @@ public class HotBarcodeManager : MonoBehaviour
         text.text = content;
         text.color = color;
         GetComponent<AudioSource>().PlayOneShot(clip);
-        yield return new WaitForSeconds(2f);
-        text.text = "";
+        //yield return new WaitForSeconds(2f);
+        //text.text = "";
+        yield return null;
     }
 
     int sumDigits(long number)
@@ -146,4 +152,10 @@ public class HotBarcodeManager : MonoBehaviour
     
 
 
+}
+
+public struct PlayerData
+{
+    public int playerNumber;
+    public long largestBarcodeValue;
 }

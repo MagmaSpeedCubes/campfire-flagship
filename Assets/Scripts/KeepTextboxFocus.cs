@@ -12,6 +12,14 @@ public class KeepTextboxFocus : MonoBehaviour
 
     void Update()
     {
-        _InputField.Select();
+        if (!_InputField.isFocused)
+        {
+            _InputField.ActivateInputField();
+        }
+
+        int endPos = _InputField.text.Length;
+        _InputField.caretPosition = endPos;
+        _InputField.selectionAnchorPosition = endPos;
+        _InputField.selectionFocusPosition = endPos;
     }
 }
