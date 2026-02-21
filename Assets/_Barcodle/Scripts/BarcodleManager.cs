@@ -36,6 +36,8 @@ public class BarcodleManager : MonoBehaviour
 
     public void DisplayStatus(string text, Color color, int attemptCount)
     {
+        const float statusBarAlpha = 0.75f;
+        color.a = statusBarAlpha;
         playerAttempts[currentGuessingPlayer] = attemptCount;
 
         statusText.GetComponentInChildren<TMP_Text>().text = text;
