@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Master_Menu.unity
+    path: Assets/Menu/Scenes/Master_Menu.unity
     guid: 8e922e070396b5145922a1c0508fd9cf
   - enabled: 1
     path: Assets/BarcodeMania/Scenes/BarcodeMania_Lose.unity
