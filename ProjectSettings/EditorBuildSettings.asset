@@ -18,8 +18,14 @@ EditorBuildSettings:
     path: Assets/_BarcodeMania/Scenes/BarcodeMania_Win.unity
     guid: 03f3706c93711a24eb154c92916ed8eb
   - enabled: 1
-    path: Assets/_HotBarcode/Scenes/HotBarcode.unity
+    path: Assets/Scenes/Hot Barcode.unity
     guid: 0e88780cfce9849ba9c33422c0f7bbe1
+  - enabled: 1
+    path: Assets/_RhythmSuperstore/Scenes/RhythmSuperstore_Game.unity
+    guid: b6c4ad788dcdb4e4f9607625e757c859
+  - enabled: 1
+    path: Assets/_RhythmSuperstore/Scenes/RhythmSuperstore_End.unity
+    guid: 98f8852deb7998948b63581eded2a12c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

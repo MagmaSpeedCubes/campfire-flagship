@@ -202,7 +202,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1056643614}
+      - m_Target: {fileID: 1056643616}
         m_TargetAssemblyTypeName: HotBarcodeManager, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -234,8 +234,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: caa5c97a64b5c4ffe8ff3bfdad80c13f, type: 3}
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 60s
+  m_text: 30s
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aef1b6e0028374533917cf75346b1538, type: 2}
   m_sharedMaterial: {fileID: 5505072182454322686, guid: aef1b6e0028374533917cf75346b1538, type: 2}
@@ -400,7 +400,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -497,7 +497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIBar
   barPrefab: {fileID: 176410732}
   min: 0
-  max: 60
+  max: 30
 --- !u!224 &176410732
 RectTransform:
   m_ObjectHideFlags: 0
@@ -545,8 +545,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 4f740587801414203bad15e2c03a5bfe, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -776,13 +776,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 64
+  m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -856,7 +856,7 @@ PrefabInstance:
     - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
       propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1056643614}
+      objectReference: {fileID: 0}
     - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
       propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1203,8 +1203,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1056643613}
-  - component: {fileID: 1056643614}
   - component: {fileID: 1056643615}
+  - component: {fileID: 1056643616}
   m_Layer: 0
   m_Name: HotBarcodeManager
   m_TagString: Untagged
@@ -1227,28 +1227,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2058546665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1056643614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1056643612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0f2e151b8dd04953a059d69eadece1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotBarcodeManager
-  roundTime: 60
-  objectiveText: {fileID: 292314141}
-  alertText: {fileID: 676531103}
-  timerText: {fileID: 140727207}
-  success: {fileID: 8300000, guid: 67967c79b89cf4aa2967e9ac08b8d03f, type: 3}
-  failure: {fileID: 8300000, guid: f28df188fc67443b5bf0973a003c38e5, type: 3}
-  win: {fileID: 8300000, guid: 42e6eec87629e4d9abd752fc78878525, type: 3}
-  loss: {fileID: 8300000, guid: 9a87d5d347c9c4250aaf5b45892cf2bf, type: 3}
-  backgroundMusic: {fileID: 8300000, guid: 0150cf9ceab714f82996cc0dca216614, type: 3}
-  timerBar: {fileID: 176410731}
 --- !u!82 &1056643615
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1346,6 +1324,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1056643616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056643612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0f2e151b8dd04953a059d69eadece1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HotBarcodeManager
+  roundTime: 30
+  objectiveText: {fileID: 292314141}
+  alertText: {fileID: 676531103}
+  timerText: {fileID: 140727207}
+  success: {fileID: 8300000, guid: 67967c79b89cf4aa2967e9ac08b8d03f, type: 3}
+  failure: {fileID: 8300000, guid: f28df188fc67443b5bf0973a003c38e5, type: 3}
+  win: {fileID: 8300000, guid: 42e6eec87629e4d9abd752fc78878525, type: 3}
+  loss: {fileID: 8300000, guid: 9a87d5d347c9c4250aaf5b45892cf2bf, type: 3}
+  backgroundMusic: {fileID: 8300000, guid: 0150cf9ceab714f82996cc0dca216614, type: 3}
+  timerBar: {fileID: 176410731}
 --- !u!1 &1080890791
 GameObject:
   m_ObjectHideFlags: 0

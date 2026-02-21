@@ -66,7 +66,7 @@ public class HotBarcodeManager : MonoBehaviour
 
 
         timer -= Time.deltaTime;
-        timerText.text = $"Time: {Mathf.Ceil(timer)}s";
+        timerText.text = $"{Mathf.Ceil(timer)}s";
         timerBar.SetBarValue(Mathf.Ceil(timer));
         if(timer <= 0f)
         {
@@ -95,7 +95,10 @@ public class HotBarcodeManager : MonoBehaviour
         objectiveText.text = "Game Over! Player " + (winner) + " wins with a score of " + largestFound + "";
         alertText.text = "";
         playersInGame.Clear();
-        GetComponent<AudioSource>().Stop();
+        AudioSource asc = GetComponent<AudioSource>();
+        asc.Stop();
+        asc.PlayOneShot(win);
+
     }
 
     public void OnBarcodeFound(string text)
