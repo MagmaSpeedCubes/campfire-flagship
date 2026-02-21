@@ -67,6 +67,11 @@ public class WordleCheck : MonoBehaviour
         return string.Join("", coloredAttempt);
     }
 
+    public bool IsCorrect(string attempt)
+    {
+        return attempt == answer;
+    }
+
     string ColorChar(char c, Color color)
     {
         return $"<color=#{ColorUtility.ToHtmlStringRGB(color)}>{c}</color>";

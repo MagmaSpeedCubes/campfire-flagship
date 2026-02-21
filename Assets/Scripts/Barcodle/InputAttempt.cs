@@ -7,6 +7,7 @@ public class InputAttempt : MonoBehaviour
     [SerializeField] TMP_Text attemptPrefab, attemptCountText;
     [SerializeField] Transform scrollViewContent;
     [SerializeField] WordleCheck answerCheck;
+    [SerializeField] BarcodleManager gameManager;
 
     public void AddAttempt(string attempt)
     {
@@ -17,6 +18,14 @@ public class InputAttempt : MonoBehaviour
 
         TMP_Text newAttempt = Instantiate(attemptPrefab, scrollViewContent);
         newAttempt.text = answerCheck.Check(attempt);
+
+        if (answerCheck.IsCorrect(attempt))
+        {
+            if (attempts == 1)
+                gameManager.DisplayStatus($"You solved the Barcodle in 1 attempt! CHEATER", Color.forestGreen, attempts);
+            else
+                gameManager.DisplayStatus($"You solved the Barcodle in {attempts} attempts!", Color.forestGreen, attempts);
+        }
     }
 
     void Increment()
@@ -25,9 +34,6 @@ public class InputAttempt : MonoBehaviour
         attemptCountText.text = $"Attempts: {attempts}/{maxAttempts} Max";
 
         if (attempts >= maxAttempts)
-        {
-            Debug.Log("Too many attempts!");
-            //add text  
-        }
+            gameManager.DisplayStatus("Failed! Too many attempts. :(", Color.firebrick, attempts);
     }
 }
