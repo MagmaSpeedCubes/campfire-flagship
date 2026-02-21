@@ -50,8 +50,27 @@ public class RhythmSuperstore_Controller : MonoBehaviour
 
     public void OnItemScanned(string barcode)
     {
+        Camera mainCamera = Camera.main;
+        // First, try to scan items visible in camera
         foreach (GameObject item in SpawnedItems)
         {
+            if (item == null) continue;
+            Vector3 viewportPos = mainCamera.WorldToViewportPoint(item.transform.position);
+            bool isVisible = viewportPos.z > 0 && viewportPos.x >= 0 && viewportPos.x <= 1 && viewportPos.y >= 0 && viewportPos.y <= 1;
+            if (!isVisible) continue;
+            RhythmSuperstore_ItemController controller = item.GetComponent<RhythmSuperstore_ItemController>();
+            if (controller.GetItem().Barcode == long.Parse(barcode))
+            {
+                SpawnedItems.Remove(item);
+                Destroy(item);
+                Score ++;
+                return;
+            }
+        }
+        // If not found, fallback to any item
+        foreach (GameObject item in SpawnedItems)
+        {
+            if (item == null) continue;
             RhythmSuperstore_ItemController controller = item.GetComponent<RhythmSuperstore_ItemController>();
             if (controller.GetItem().Barcode == long.Parse(barcode))
             {
