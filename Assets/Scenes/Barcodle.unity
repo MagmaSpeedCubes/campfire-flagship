@@ -820,6 +820,7 @@ GameObject:
   - component: {fileID: 1612565222}
   - component: {fileID: 1612565225}
   - component: {fileID: 1612565224}
+  - component: {fileID: 1612565226}
   - component: {fileID: 1612565223}
   m_Layer: 5
   m_Name: Inputs
@@ -917,6 +918,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612565221}
   m_CullTransparentMesh: 1
+--- !u!114 &1612565226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612565221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6def821c4ff83e4fb7c6c852f91849e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputAttempt
+  attemptPrefab: {fileID: 4466240020706164611, guid: 9251e0fb35b2cc74a8e4f85c46792829, type: 3}
+  scrollViewContent: {fileID: 1528912955}
 --- !u!1 &1858622109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,6 +1195,30 @@ PrefabInstance:
     - target: {fileID: 1674326499477361224, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
       propertyPath: m_Name
       value: Barcode Reader
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1612565226}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddAttempt
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InputAttempt, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5895361263742754771, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
       propertyPath: m_Pivot.x
