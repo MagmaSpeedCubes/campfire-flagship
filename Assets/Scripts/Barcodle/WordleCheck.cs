@@ -9,7 +9,7 @@ public class WordleCheck : MonoBehaviour
     [SerializeField] ChooseBarcode inputBarcode;
     char[] answerDigits;
 
-    private void Awake()
+    private void OnEnable()
     {
         answer = inputBarcode.ChosenBarcode;
         answerDigits = answer.ToCharArray();
