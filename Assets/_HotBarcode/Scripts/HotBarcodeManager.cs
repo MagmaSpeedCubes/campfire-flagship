@@ -34,6 +34,11 @@ public class HotBarcodeManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        ReadBarcode.Instance.OnBarcodeScanned.AddListener(OnBarcodeFound);
+    }
+
     public void StartGame()
     {
 
@@ -95,7 +100,11 @@ public class HotBarcodeManager : MonoBehaviour
 
     public void OnBarcodeFound(string text)
     {
-        if(!gameActive) return;
+        if (!gameActive)
+        {
+            StartGame();
+            return;
+        }
         Debug.Log(text);
         try
         {
@@ -116,16 +125,15 @@ public class HotBarcodeManager : MonoBehaviour
             else
             {
                 StartCoroutine(FlashMessage(alertText, Color.yellow, $"{barcodeValue}'s score of {barcodeScore} is not larger than {largestFound}. Try again!", failure));
-                timer -= 5f; // Penalty for low score
+                timer -= 5f; 
             }
             
         }catch(System.Exception e)
         {
             StartCoroutine(FlashMessage(alertText, Color.red, $"{text} is not a valid barcode!", failure));
-            timer -= 5f; // Penalty for invalid barcode
+            timer -= 5f; 
             return;
         }
-        
     }
 
     IEnumerator FlashMessage(TextMeshProUGUI text, Color color, string content, AudioClip clip)
@@ -133,8 +141,6 @@ public class HotBarcodeManager : MonoBehaviour
         text.text = content;
         text.color = color;
         GetComponent<AudioSource>().PlayOneShot(clip);
-        //yield return new WaitForSeconds(2f);
-        //text.text = "";
         yield return null;
     }
 
