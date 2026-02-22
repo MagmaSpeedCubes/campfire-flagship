@@ -12,7 +12,7 @@ public class RhythmSuperstore_EndController : MonoBehaviour
 
     private void Start()
     {
-        _Text.text = $"Final Score: {RhythmSuperstore_GameData.Instance.Got}/{RhythmSuperstore_GameData.Instance.OutOf}";
+        _Text.text = $"Final Score: {RhythmSuperstore_GameData.Instance.Got}";
     
         ReadBarcode.Instance.OnBarcodeScanned.AddListener(OnScan);
     }
