@@ -13,7 +13,7 @@ public class BarcodeMania_EndController : MonoBehaviour
     {
         ReadBarcode.Instance.OnBarcodeScanned.AddListener(ContinueToMenu);
 
-        WinnerText.text = $"Player {GetWinningPlayer()} wins with a score of {BarcodeMania_GameData.Instance.PlayerScores[GetWinningPlayer() - 1]}!";
+        WinnerText.text = $"Player {GameState.Players[GetWinningPlayer()]} wins with a score of {BarcodeMania_GameData.Instance.PlayerScores[GetWinningPlayer() - 1]}!";
     }
 
     public void ContinueToMenu(string _)

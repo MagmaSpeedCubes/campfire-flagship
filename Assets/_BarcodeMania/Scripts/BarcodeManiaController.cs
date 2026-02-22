@@ -15,7 +15,6 @@ public class BarcodeManiaController : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private int NumberOfItemsToSpawn;
-    [SerializeField] private int NumberOfPlayers;
 
     [Header("Debug")]
     [SerializeField] private List<GameObject> SpawnedItems;
@@ -53,7 +52,7 @@ public class BarcodeManiaController : MonoBehaviour
         if (SpawnedItems.Count == 0 || TimeLimit <= 0) 
         {
             BarcodeMania_GameData.Instance.PlayerScores.Add(NumberOfItemsToSpawn - SpawnedItems.Count);
-            if (BarcodeMania_GameData.Instance.PlayerScores.Count >= NumberOfPlayers)
+            if (BarcodeMania_GameData.Instance.PlayerScores.Count >= GameState.PlayerCount)
             {
                 SceneManager.LoadScene(EndSceneName);
             }
@@ -88,7 +87,7 @@ public class BarcodeManiaController : MonoBehaviour
 
     private void UpdateUI()
     {
-        PlayerText.text = $"Player {BarcodeMania_GameData.Instance.PlayerScores.Count + 1}'s turn.";
+        PlayerText.text = $"Player {GameState.Players[BarcodeMania_GameData.Instance.PlayerScores.Count]}'s turn.";
         TimeText.text = $"Time Remaining: {Mathf.CeilToInt(TimeLimit)}s";
     }
 }

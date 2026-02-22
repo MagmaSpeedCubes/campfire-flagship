@@ -142,6 +142,7 @@ public class HotBarcodeManager : MonoBehaviour
         catch (System.Exception e)
         {
             StartCoroutine(FlashMessage(alertText, Color.red, $"{text} is not a valid barcode!", failure));
+            Debug.LogWarning(e);
             timer -= 5f;
             return;
         }
