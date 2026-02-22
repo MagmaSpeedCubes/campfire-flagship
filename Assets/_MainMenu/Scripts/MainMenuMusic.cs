@@ -9,9 +9,12 @@ public class MainMenuMusic : MonoBehaviour
 
     private void Awake()
     {
+        var audioSource = GetComponent<AudioSource>();
         if (Random.value <= specialMusicChance)
-            GetComponent<AudioSource>().clip = specialMusic;
+            audioSource.clip = specialMusic;
         else
-            GetComponent<AudioSource>().clip = defaultMusic;
+            audioSource.clip = defaultMusic;
+
+        audioSource.Play();
     }
 }
