@@ -13,7 +13,15 @@ public class BarcodeMania_EndController : MonoBehaviour
     {
         ReadBarcode.Instance.OnBarcodeScanned.AddListener(ContinueToMenu);
 
-        WinnerText.text = $"Player {GameState.Players[GetWinningPlayer()]} wins with a score of {BarcodeMania_GameData.Instance.PlayerScores[GetWinningPlayer()]}!";
+        int winnerIndex = GetWinningPlayer();
+        if (winnerIndex == -1)
+        {
+            WinnerText.text = "No winner: no scores available.";
+        }
+        else
+        {
+            WinnerText.text = $"Player {GameState.Players[winnerIndex]} wins with a score of {BarcodeMania_GameData.Instance.PlayerScores[winnerIndex]}!";
+        }
     }
 
     public void ContinueToMenu(string _)
@@ -24,11 +32,37 @@ public class BarcodeMania_EndController : MonoBehaviour
 
     public int GetWinningPlayer()
     {
-        int highestScore = -1;
-        foreach(int score in BarcodeMania_GameData.Instance.PlayerScores)
+        var scores = BarcodeMania_GameData.Instance.PlayerScores;
+        var times = BarcodeMania_GameData.Instance.PlayerTimes;
+        if (scores == null || scores.Count == 0) return -1;
+
+        float highestScore = float.MinValue;
+        for (int i = 0; i < scores.Count; i++)
         {
-            if (score > highestScore) highestScore = score;
+            if (scores[i] > highestScore) highestScore = scores[i];
         }
-        return BarcodeMania_GameData.Instance.PlayerScores.IndexOf(highestScore);
+
+        List<int> tiedIndices = new List<int>();
+        for (int i = 0; i < scores.Count; i++)
+        {
+            if (scores[i] == highestScore) tiedIndices.Add(i);
+        }
+
+        if (tiedIndices.Count == 1)
+        {
+            return tiedIndices[0];
+        }
+
+        float highestTime = float.MinValue;
+        int winnerIndex = tiedIndices[0];
+        foreach (int idx in tiedIndices)
+        {
+            if (times != null && idx < times.Count && times[idx] > highestTime)
+            {
+                highestTime = times[idx];
+                winnerIndex = idx;
+            }
+        }
+        return winnerIndex;
     }
 }

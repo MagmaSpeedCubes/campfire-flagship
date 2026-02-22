@@ -52,6 +52,8 @@ public class BarcodeManiaController : MonoBehaviour
         if (SpawnedItems.Count == 0 || TimeLimit <= 0) 
         {
             BarcodeMania_GameData.Instance.PlayerScores.Add(NumberOfItemsToSpawn - SpawnedItems.Count);
+            BarcodeMania_GameData.Instance.PlayerTimes.Add(TimeLimit);
+
             if (BarcodeMania_GameData.Instance.PlayerScores.Count >= GameState.PlayerCount)
             {
                 SceneManager.LoadScene(EndSceneName);

@@ -6,6 +6,7 @@ public class BarcodeMania_GameData : MonoBehaviour
     [HideInInspector] public static BarcodeMania_GameData Instance;
 
     [SerializeField] public List<float> PlayerScores;
+    [SerializeField] public List<float> PlayerTimes;
 
     private void Awake()
     {
