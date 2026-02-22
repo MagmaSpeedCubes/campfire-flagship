@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_MainMenu/Scenes/Setup Players.unity
-    guid: ee2471d47db836b4b8f1cd9255a34da5
-  - enabled: 1
     path: Assets/_MainMenu/Scenes/Master_Menu.unity
     guid: 8d30a9896390c8f4c9ebbbd03252f81c
   - enabled: 1
@@ -17,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_BarcodeMania/Scenes/BarcodeMania_End.unity
     guid: 4b30875ba3ce4d845a69a4ba3847e834
+  - enabled: 0
+    path: Assets/_BarcodeMania/Scenes/BarcodeMania_Win.unity
+    guid: 03f3706c93711a24eb154c92916ed8eb
   - enabled: 1
     path: Assets/_Barcodle/Barcodle.unity
     guid: 71ba64fff20f6884fa818a6cf9e8ccf2
