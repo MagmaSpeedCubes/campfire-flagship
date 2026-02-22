@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7a9b0f53be392f48ba0c3d54f29e415, type: 3}
   m_Name: RhythmSuperstore
   m_EditorClassIdentifier: Assembly-CSharp::Minigame
-  Name: Rythm Superstore
+  Name: Rhythm Superstore
   Description: Scan as many of the items as possible.
   SceneName: RhythmSuperstore_Game
   Thumbnail: {fileID: 21300000, guid: 04801bdacce906a4a981dd8e659e67f7, type: 3}
