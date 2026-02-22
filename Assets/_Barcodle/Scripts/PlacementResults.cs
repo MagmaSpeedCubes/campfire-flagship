@@ -13,7 +13,6 @@ public class PlacementResults : MonoBehaviour
     [SerializeField] TMP_Text winnerText;
     [SerializeField] BarcodleManager gameManager;
     [SerializeField] InputAttempt inputAttempt;
-    [SerializeField] float exitDelay;
     [SerializeField] GameObject exitInfoText;
     bool canExit = false;
 
@@ -34,7 +33,7 @@ public class PlacementResults : MonoBehaviour
                 playerIndexes = new();
                 attemptsToPlayer[attempts] = playerIndexes;
             }
-            playerIndexes.Add(i + 1);
+            playerIndexes.Add(i);
         }
 
         int maxScore = attemptsToPlayer.Keys.First();
@@ -53,7 +52,7 @@ public class PlacementResults : MonoBehaviour
 
                     for (int i = 0; i < kvp.Value.Count; i++)
                     {
-                        winnnersIndexes.Append(kvp.Value[i]);
+                        winnnersIndexes.Append(GameState.Players[kvp.Value[i]]);
                         if (i < kvp.Value.Count - 1)
                             winnnersIndexes.Append(", ");
                     }
@@ -71,7 +70,7 @@ public class PlacementResults : MonoBehaviour
 
             for (int i = 0; i < kvp.Value.Count; i++)
             {
-                runnerupsIndexes.Append(kvp.Value[i]);
+                runnerupsIndexes.Append(GameState.Players[kvp.Value[i]]);
                 if (i < kvp.Value.Count - 1)
                     runnerupsIndexes.Append(", ");
             }

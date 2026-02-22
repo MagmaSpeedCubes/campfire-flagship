@@ -11,6 +11,7 @@ public class BarcodleManager : MonoBehaviour
     [SerializeField] float newRoundDelay;
     [SerializeField] InputAttempt inputAttempt;
     [SerializeField] TMP_Text instructionText;
+    [SerializeField] TMP_Text playerNameText;
     [SerializeField] GameObject placements;
     [SerializeField] int[] playerAttempts;
     int currentGuessingPlayer = 0;
@@ -89,6 +90,7 @@ public class BarcodleManager : MonoBehaviour
             choosingPlayer -= GameState.PlayerCount;
 
         UpdateInstructionText(choosingPlayer);
+        UpdatePlayerNameText();
     }
 
     private void UpdateInstructionText(int choosingPlayer)
@@ -96,5 +98,10 @@ public class BarcodleManager : MonoBehaviour
         string choosing = GameState.Players[choosingPlayer];
         string guessing = GameState.Players[currentGuessingPlayer];
         instructionText.text = $"{choosing}, choose a barcode for {guessing} to guess by scanning it.";
+    }
+
+    void UpdatePlayerNameText()
+    {
+        playerNameText.text = $"Current Guesser: {GameState.Players[currentGuessingPlayer]}";
     }
 }
