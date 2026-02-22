@@ -24,13 +24,13 @@ public class BarcodleManager : MonoBehaviour
     private void Awake()
     {
         do
-            randomOffset = Random.Range(1 - GameState.numPlayers, GameState.numPlayers - 1);
+            randomOffset = Random.Range(1 - GameState.PlayerCount, GameState.PlayerCount - 1);
         while (randomOffset == 0);
 
-        playerAttempts = new int[GameState.numPlayers];
+        playerAttempts = new int[GameState.PlayerCount];
 
-        playersPool = new(GameState.numPlayers);
-        for (int i = 0; i < GameState.numPlayers; i++)
+        playersPool = new(GameState.PlayerCount);
+        for (int i = 0; i < GameState.PlayerCount; i++)
             playersPool.Add(i);
     }
 
@@ -84,15 +84,17 @@ public class BarcodleManager : MonoBehaviour
 
         int choosingPlayer = currentGuessingPlayer + randomOffset;
         if (choosingPlayer < 0)
-            choosingPlayer += GameState.numPlayers;
-        if (choosingPlayer > GameState.numPlayers - 1)
-            choosingPlayer -= GameState.numPlayers;
+            choosingPlayer += GameState.PlayerCount;
+        if (choosingPlayer > GameState.PlayerCount - 1)
+            choosingPlayer -= GameState.PlayerCount;
 
         UpdateInstructionText(choosingPlayer);
     }
 
     private void UpdateInstructionText(int choosingPlayer)
     {
-        instructionText.text = $"Player {choosingPlayer + 1}, choose a barcode for Player {currentGuessingPlayer + 1} to guess by scanning it.";
+        string choosing = GameState.Players[choosingPlayer + 1];
+        string guessing = GameState.Players[currentGuessingPlayer + 1];
+        instructionText.text = $"{choosing}, choose a barcode for {guessing} to guess by scanning it.";
     }
 }

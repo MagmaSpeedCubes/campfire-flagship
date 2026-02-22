@@ -1,8 +1,12 @@
-using UnityEngine;
-
 public static class GameState
 {
-    public static int numPlayers = 2;
+    static string[] players;
 
+    public static string[] Players => players;
+    public static int PlayerCount => players.Length;
 
+    public static void Initialize(string[] playerArray)
+    {
+        players = playerArray;
+    }
 }
