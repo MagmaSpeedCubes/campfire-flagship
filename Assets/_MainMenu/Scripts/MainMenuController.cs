@@ -17,6 +17,7 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private long NextPositionBarcode;
     [SerializeField] private long SelectBarcode;
     [SerializeField] private long LastPositionBarcode;
+    [SerializeField] long resetBarcode;
 
     [Header("Debug")]
     [SerializeField] private List<GameObject> LoadedMinigames = new List<GameObject>();
@@ -57,6 +58,10 @@ public class MainMenuController : MonoBehaviour
             SelectedIndex--;
             if (SelectedIndex < 0) SelectedIndex = LoadedMinigames.Count - 1;
         }
+        else if (resetBarcode == long.Parse(barcode))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     private void UpdatePositions()
@@ -64,12 +69,12 @@ public class MainMenuController : MonoBehaviour
         for (int i = 0; i < LoadedMinigames.Count; i++)
         {
             Transform targetTransform = LoadedMinigames[i].transform;
-            
+
             int relativeIndex = i - SelectedIndex;
 
             Vector3 targetPos = Vector3.zero;
             targetPos.x = relativeIndex * Spacing;
-            
+
             if (relativeIndex != 0)
             {
                 targetPos.z = SideDepth;
@@ -78,7 +83,7 @@ public class MainMenuController : MonoBehaviour
             float rotY = 0;
             if (relativeIndex > 0) rotY = -SideRotation;
             else if (relativeIndex < 0) rotY = SideRotation;
-            
+
             Quaternion targetRot = Quaternion.Euler(0, rotY, 0);
 
             targetTransform.localPosition = Vector3.Lerp(targetTransform.localPosition, targetPos, Time.deltaTime * LerpSpeed);
