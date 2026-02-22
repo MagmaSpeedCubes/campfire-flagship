@@ -2284,6 +2284,7 @@ RectTransform:
   m_Children:
   - {fileID: 1424042190}
   - {fileID: 563429012}
+  - {fileID: 799436188}
   - {fileID: 706330570}
   - {fileID: 1887726646}
   - {fileID: 1027210734}
@@ -2291,7 +2292,6 @@ RectTransform:
   - {fileID: 187779620}
   - {fileID: 1350053913}
   - {fileID: 524114756}
-  - {fileID: 799436188}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2470,7 +2470,6 @@ MonoBehaviour:
   winnerText: {fileID: 100419599}
   gameManager: {fileID: 1424042189}
   inputAttempt: {fileID: 1612565226}
-  exitDelay: 10
   exitInfoText: {fileID: 356340564}
 --- !u!1 &1394465006
 GameObject:
