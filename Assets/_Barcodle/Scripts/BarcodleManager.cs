@@ -93,8 +93,8 @@ public class BarcodleManager : MonoBehaviour
 
     private void UpdateInstructionText(int choosingPlayer)
     {
-        string choosing = GameState.Players[choosingPlayer + 1];
-        string guessing = GameState.Players[currentGuessingPlayer + 1];
+        string choosing = GameState.Players[choosingPlayer];
+        string guessing = GameState.Players[currentGuessingPlayer];
         instructionText.text = $"{choosing}, choose a barcode for {guessing} to guess by scanning it.";
     }
 }

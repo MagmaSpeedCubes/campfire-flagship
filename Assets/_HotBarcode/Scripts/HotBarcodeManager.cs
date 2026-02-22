@@ -49,7 +49,7 @@ public class HotBarcodeManager : MonoBehaviour
         largestFound = 0;
         activePlayer = 0;
         timer = roundTime;
-        objectiveText.text = $"{GameState.Players[activePlayer + 1]} objective: Find a barcode";
+        objectiveText.text = $"{GameState.Players[activePlayer]} objective: Find a barcode";
         alertText.text = string.Empty;
 
         for (int i = 0; i < GameState.PlayerCount; i++)
@@ -74,7 +74,7 @@ public class HotBarcodeManager : MonoBehaviour
         if (timer <= 0f)
         {
 
-            StartCoroutine(FlashMessage(alertText, Color.red, $"{GameState.Players[activePlayer + 1]} ran out of time!", loss));
+            StartCoroutine(FlashMessage(alertText, Color.red, $"{GameState.Players[activePlayer]} ran out of time!", loss));
             playersInGame.Remove(activePlayer);
             activePlayer = (activePlayer + 1) % GameState.PlayerCount;
 
@@ -82,11 +82,11 @@ public class HotBarcodeManager : MonoBehaviour
             if (playersInGame.Count == 1)
             {
 
-                EndGame(playersInGame[0] + 1);
+                EndGame(playersInGame[0]);
             }
             else
             {
-                objectiveText.text = $"{GameState.Players[activePlayer + 1]} objective: Find a barcode";
+                objectiveText.text = $"{GameState.Players[activePlayer]} objective: Find a barcode";
                 timer = roundTime;
             }
         }
@@ -125,12 +125,12 @@ public class HotBarcodeManager : MonoBehaviour
 
             if (barcodeScore > largestFound)
             {
-                StartCoroutine(FlashMessage(alertText, Color.green, $"{GameState.Players[activePlayer + 1]} found a new largest barcode score: {barcodeValue} has a score of {barcodeScore}", success));
+                StartCoroutine(FlashMessage(alertText, Color.green, $"{GameState.Players[activePlayer]} found a new largest barcode score: {barcodeValue} has a score of {barcodeScore}", success));
 
                 largestFound = barcodeScore;
                 activePlayer = (activePlayer + 1) % GameState.PlayerCount;
                 timer = roundTime;
-                objectiveText.text = $"{GameState.Players[activePlayer + 1]} objective: Find a barcode with a score higher than {largestFound}";
+                objectiveText.text = $"{GameState.Players[activePlayer]} objective: Find a barcode with a score higher than {largestFound}";
             }
             else
             {
