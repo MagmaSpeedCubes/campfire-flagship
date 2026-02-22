@@ -17,9 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_BarcodeMania/Scenes/BarcodeMania_End.unity
     guid: 4b30875ba3ce4d845a69a4ba3847e834
-  - enabled: 0
-    path: Assets/_BarcodeMania/Scenes/BarcodeMania_Win.unity
-    guid: 03f3706c93711a24eb154c92916ed8eb
   - enabled: 1
     path: Assets/_HotBarcode/Scenes/HotBarcode.unity
     guid: c971512fbd476e44eaf6df3806007096
