@@ -68,6 +68,7 @@
   <Project Path="Unity.AI.Navigation.Updater.csproj" />
   <Project Path="UnityEngine.Purchasing.Codeless.csproj" />
   <Project Path="EditorAttributes.Editor.csproj" />
+  <Project Path="Unity.SysrootPackage.Editor.csproj" />
   <Project Path="UnityEditor.UI.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.2D.Editor.Overrides.csproj" />
   <Project Path="Unity.Analytics.DataPrivacy.csproj" />
@@ -80,6 +81,7 @@
   <Project Path="Unity.Multiplayer.Center.Common.csproj" />
   <Project Path="Unity.Services.Core.Environments.Internal.csproj" />
   <Project Path="Unity.InputSystem.ForUI.csproj" />
+  <Project Path="Unity.Toolchain.Win-x86_64-Linux.csproj" />
   <Project Path="Unity.Services.Core.Scheduler.csproj" />
   <Project Path="Unity.AI.Navigation.csproj" />
   <Project Path="UnityEngine.Purchasing.SecurityCore.csproj" />
@@ -130,4 +132,5 @@
   <Project Path="Unity.RenderPipelines.Universal.Config.Runtime.csproj" />
   <Project Path="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.csproj" />
   <Project Path="Unity.RenderPipelines.Core.ShaderLibrary.csproj" />
+  <Project Path="Unity.Sysroot.Linux_x86_64.csproj" />
 </Solution>
