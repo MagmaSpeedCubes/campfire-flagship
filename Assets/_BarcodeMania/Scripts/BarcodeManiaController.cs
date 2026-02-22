@@ -1,19 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BarcodeManiaController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject ScannableItemPrefab;
     [SerializeField] private ScannableItem[] _ScannableItems;
+    [SerializeField] private Text PlayerText;
     [SerializeField] private Text TimeText;
     [Space]
-    [SerializeField] private string WinSceneName;
-    [SerializeField] private string LoseSceneName;
+    [SerializeField] private string EndSceneName;
 
     [Header("Settings")]
     [SerializeField] private int NumberOfItemsToSpawn;
+    [SerializeField] private int NumberOfPlayers;
 
     [Header("Debug")]
     [SerializeField] private List<GameObject> SpawnedItems;
@@ -43,18 +45,23 @@ public class BarcodeManiaController : MonoBehaviour
         TimeLimit -= Time.deltaTime;
         UpdateUI();
 
-        WinCondition();
-        LoseCondition();
+        NextCondition();
     }
 
-    private void WinCondition()
+    private void NextCondition()
     {
-        if (SpawnedItems.Count == 0) UnityEngine.SceneManagement.SceneManager.LoadScene(WinSceneName);
-    }
-
-    private void LoseCondition()
-    {
-        if (TimeLimit <= 0) UnityEngine.SceneManagement.SceneManager.LoadScene(LoseSceneName);
+        if (SpawnedItems.Count == 0 || TimeLimit <= 0) 
+        {
+            BarcodeMania_GameData.Instance.PlayerScores.Add(NumberOfItemsToSpawn - SpawnedItems.Count);
+            if (BarcodeMania_GameData.Instance.PlayerScores.Count >= NumberOfPlayers)
+            {
+                SceneManager.LoadScene(EndSceneName);
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
     }
 
     public void OnItemScanned(string barcode)
@@ -81,6 +88,7 @@ public class BarcodeManiaController : MonoBehaviour
 
     private void UpdateUI()
     {
+        PlayerText.text = $"Player {BarcodeMania_GameData.Instance.PlayerScores.Count + 1}'s turn.";
         TimeText.text = $"Time Remaining: {Mathf.CeilToInt(TimeLimit)}s";
     }
 }
