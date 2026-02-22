@@ -71,6 +71,7 @@
   <Project Path="UnityEditor.UI.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.2D.Editor.Overrides.csproj" />
   <Project Path="Unity.Analytics.DataPrivacy.csproj" />
+  <Project Path="Danqzq.LeaderboardCreator.csproj" />
   <Project Path="Unity.2D.Sprite.Editor.csproj" />
   <Project Path="Unity.AI.Navigation.Editor.csproj" />
   <Project Path="UnityEngine.Advertisements.DevX.Editor.csproj" />
@@ -111,6 +112,7 @@
   <Project Path="Unity.Services.Core.Registration.csproj" />
   <Project Path="UnityEngine.Purchasing.WinRTCore.csproj" />
   <Project Path="UnityEngine.XR.LegacyInputHelpers.csproj" />
+  <Project Path="LeaderboardCreatorEditor.csproj" />
   <Project Path="Unity.InputSystem.DocCodeSamples.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.Shaders.csproj" />
   <Project Path="Unity.RenderPipelines.Core.Runtime.Shared.csproj" />
