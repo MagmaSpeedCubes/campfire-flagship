@@ -96,6 +96,6 @@ public class PlacementResults : MonoBehaviour
         if (!isActiveAndEnabled || !canExit)
             return;
 
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Master_Menu");
     }
 }
