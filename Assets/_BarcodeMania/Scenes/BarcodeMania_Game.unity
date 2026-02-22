@@ -5356,6 +5356,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barcode Reader
       objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: _InputField
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 367813424}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnItemScanned
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: NextSlide
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BarcodeManiaController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: TutorialSlides, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867917943473240786, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: OnBarcodeScanned.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5895361263742754771, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5435,6 +5487,10 @@ PrefabInstance:
     - target: {fileID: 5895361263742754771, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5985033239406773639, guid: 45f7f37c9a872674f98d44c8ec995787, type: 3}
+      propertyPath: _InputField
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
