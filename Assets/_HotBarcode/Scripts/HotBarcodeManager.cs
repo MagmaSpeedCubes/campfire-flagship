@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -50,10 +49,10 @@ public class HotBarcodeManager : MonoBehaviour
         largestFound = 0;
         activePlayer = 0;
         timer = roundTime;
-        objectiveText.text = $"Player {activePlayer + 1} objective: Find a barcode";
-        alertText.text = "";
+        objectiveText.text = $"{GameState.Players[activePlayer]} objective: Find a barcode";
+        alertText.text = string.Empty;
 
-        for (int i = 0; i < GameState.numPlayers; i++)
+        for (int i = 0; i < GameState.PlayerCount; i++)
         {
             playersInGame.Add(i);
         }
@@ -72,24 +71,24 @@ public class HotBarcodeManager : MonoBehaviour
         timer -= Time.deltaTime;
         timerText.text = $"{Mathf.Ceil(timer)}s";
         timerBar.SetBarValue(Mathf.Ceil(timer));
-        if(timer <= 0f)
+        if (timer <= 0f)
         {
 
-            StartCoroutine(FlashMessage(alertText, Color.red, $"Player {activePlayer + 1} ran out of time!", loss));
+            StartCoroutine(FlashMessage(alertText, Color.red, $"{GameState.Players[activePlayer]} ran out of time!", loss));
             playersInGame.Remove(activePlayer);
-            activePlayer = (activePlayer + 1) % GameState.numPlayers;
-            
+            activePlayer = (activePlayer + 1) % GameState.PlayerCount;
 
-            if(playersInGame.Count == 1)
+
+            if (playersInGame.Count == 1)
             {
-                
-                EndGame(playersInGame[0] + 1);
+
+                EndGame(playersInGame[0]);
             }
             else
             {
-                objectiveText.text = $"Player {activePlayer + 1} objective: Find a barcode";
+                objectiveText.text = $"{GameState.Players[activePlayer]} objective: Find a barcode";
                 timer = roundTime;
-            }   
+            }
         }
     }
 
@@ -97,7 +96,7 @@ public class HotBarcodeManager : MonoBehaviour
     {
         gameActive = false;
         gameOver = true;
-        objectiveText.text = "Game Over! Player " + (winner) + " wins with a score of " + largestFound + "";
+        objectiveText.text = $"Game Over! {GameState.Players[winner]} wins with a score of {largestFound}";
         alertText.text = "Scan anything to return to menu";
         playersInGame.Clear();
         AudioSource asc = GetComponent<AudioSource>();
@@ -124,27 +123,26 @@ public class HotBarcodeManager : MonoBehaviour
             long barcodeValue = long.Parse(text);
             int barcodeScore = sumDigits(barcodeValue);
 
-            if(barcodeScore > largestFound)
+            if (barcodeScore > largestFound)
             {
-                StartCoroutine(FlashMessage(alertText, Color.green, $"Player {activePlayer + 1} found a new largest barcode score: {barcodeValue} has a score of {barcodeScore}", success));
+                StartCoroutine(FlashMessage(alertText, Color.green, $"{GameState.Players[activePlayer]} found a new largest barcode score: {barcodeValue} has a score of {barcodeScore}", success));
 
                 largestFound = barcodeScore;
-                activePlayer = (activePlayer + 1) % GameState.numPlayers;
+                activePlayer = (activePlayer + 1) % GameState.PlayerCount;
                 timer = roundTime;
-                objectiveText.text = $"Player {activePlayer + 1} objective: Find a barcode with a score higher than {largestFound}";
-
-
+                objectiveText.text = $"{GameState.Players[activePlayer]} objective: Find a barcode with a score higher than {largestFound}";
             }
             else
             {
                 StartCoroutine(FlashMessage(alertText, Color.yellow, $"{barcodeValue}'s score of {barcodeScore} is not larger than {largestFound}. Try again!", failure));
-                timer -= 5f; 
+                timer -= 5f;
             }
-            
-        }catch(System.Exception e)
+
+        }
+        catch (System.Exception e)
         {
             StartCoroutine(FlashMessage(alertText, Color.red, $"{text} is not a valid barcode!", failure));
-            timer -= 5f; 
+            timer -= 5f;
             return;
         }
     }
@@ -168,7 +166,7 @@ public class HotBarcodeManager : MonoBehaviour
         return sum;
     }
 
-    
+
 
 
 }
