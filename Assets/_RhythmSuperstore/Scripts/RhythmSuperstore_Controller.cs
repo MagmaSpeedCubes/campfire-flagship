@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -16,6 +17,8 @@ public class RhythmSuperstore_Controller : MonoBehaviour
  
     [Header("Settings")]
     [SerializeField] private int AmountToSpawn;
+    [SerializeField] private float minSpawnTime = 0.25f;
+    [SerializeField] private float maxSpawnTime = 2f;
     [SerializeField] private string EndSceneName;
     [SerializeField] private int maxScore = 10;
     [SerializeField] private Dictionary<string, Color> scoreColors = new Dictionary<string, Color>()
@@ -34,7 +37,7 @@ public class RhythmSuperstore_Controller : MonoBehaviour
     private void Start()
     {
         ReadBarcode.Instance.OnBarcodeScanned.AddListener(OnItemScanned);
-        SpawnAllItems();
+        StartCoroutine(SpawnItems());
     }
 
     private void Update()
@@ -154,6 +157,21 @@ public class RhythmSuperstore_Controller : MonoBehaviour
             RhythmSuperstore_ItemController controller = itemObj.GetComponent<RhythmSuperstore_ItemController>();
             controller.SetItem(_Items[randIndex]);
             SpawnedItems.Add(itemObj);
+        }
+    }
+
+    IEnumerator SpawnItems()
+    {
+        for (int i = 0; i < AmountToSpawn; i++)
+        {
+            int randIndex = Random.Range(0, _Items.Count);
+            Vector3 randomOffset = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
+            GameObject itemObj = Instantiate(ItemPrefab, SpawnPosition.position + randomOffset, Quaternion.identity, transform);
+            RhythmSuperstore_ItemController controller = itemObj.GetComponent<RhythmSuperstore_ItemController>();
+            controller.SetItem(_Items[randIndex]);
+            SpawnedItems.Add(itemObj);
+            float spawnDelay = Random.Range(minSpawnTime, maxSpawnTime);
+            yield return new WaitForSeconds(spawnDelay);
         }
     }
 
