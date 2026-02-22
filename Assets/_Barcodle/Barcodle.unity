@@ -1415,7 +1415,7 @@ MonoBehaviour:
   - {r: 1, g: 0.8431373, b: 0, a: 1}
   - {r: 0.4117647, g: 0.4117647, b: 0.4117647, a: 1}
   speed: 0.05
-  staticTime: 0.5
+  staticTime: 0.1
 --- !u!1 &644083572
 GameObject:
   m_ObjectHideFlags: 0
