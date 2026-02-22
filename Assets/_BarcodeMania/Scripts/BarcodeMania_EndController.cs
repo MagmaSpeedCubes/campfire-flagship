@@ -13,7 +13,7 @@ public class BarcodeMania_EndController : MonoBehaviour
     {
         ReadBarcode.Instance.OnBarcodeScanned.AddListener(ContinueToMenu);
 
-        WinnerText.text = $"Player {GameState.Players[GetWinningPlayer()]} wins with a score of {BarcodeMania_GameData.Instance.PlayerScores[GetWinningPlayer() - 1]}!";
+        WinnerText.text = $"Player {GameState.Players[GetWinningPlayer()]} wins with a score of {BarcodeMania_GameData.Instance.PlayerScores[GetWinningPlayer()]}!";
     }
 
     public void ContinueToMenu(string _)
@@ -24,26 +24,11 @@ public class BarcodeMania_EndController : MonoBehaviour
 
     public int GetWinningPlayer()
     {
-        List<float> scores = BarcodeMania_GameData.Instance.PlayerScores;
-
-        if (scores == null || scores.Count == 0)
+        int highestScore = -1;
+        foreach(int score in BarcodeMania_GameData.Instance.PlayerScores)
         {
-            Debug.LogWarning("No player scores available.");
-            return -1;
+            if (score > highestScore) highestScore = score;
         }
-
-        int highestIndex = 0;
-        float highestScore = scores[0];
-
-        for (int i = 1; i < scores.Count; i++)
-        {
-            if (scores[i] > highestScore)
-            {
-                highestScore = scores[i];
-                highestIndex = i;
-            }
-        }
-
-        return highestIndex + 1;
+        return BarcodeMania_GameData.Instance.PlayerScores.IndexOf(highestScore);
     }
 }
