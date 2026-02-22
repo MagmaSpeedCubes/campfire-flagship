@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Barcodle
   m_EditorClassIdentifier: Assembly-CSharp::Minigame
   Name: Barcodle
-  Description: Wordle but barcodes.
+  Description: Wordle with barcodes.
   SceneName: Barcodle
   Thumbnail: {fileID: 21300000, guid: 9e6fdef92f62b304884c6a92f4062f6d, type: 3}

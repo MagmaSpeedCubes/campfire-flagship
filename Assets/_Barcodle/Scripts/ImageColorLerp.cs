@@ -17,6 +17,7 @@ public class ImageColorLerp : MonoBehaviour
 
     private void OnEnable()
     {
+
         StartCoroutine(LerpColors());
     }
 
@@ -28,7 +29,7 @@ public class ImageColorLerp : MonoBehaviour
         int currentColorIndex = 0;
         while (true)
         {
-            image.color = Color.Lerp(image.color, lerpColors[currentColorIndex], time);
+            image.color = Color.Lerp(image.color, lerpColors[currentColorIndex], time );
 
             time += Time.deltaTime * speed;
             if (time >= staticTime)
