@@ -83,7 +83,7 @@ public class PlacementResults : MonoBehaviour
                 : "50+ attempts (Failed) :(";
         }
 
-        Invoke(nameof(AllowExit), exitDelay);
+        AllowExit();
     }
 
     void AllowExit()

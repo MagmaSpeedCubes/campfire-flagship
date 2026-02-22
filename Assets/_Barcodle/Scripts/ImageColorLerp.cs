@@ -7,6 +7,7 @@ public class ImageColorLerp : MonoBehaviour
 {
     [SerializeField] Color[] lerpColors;
     [SerializeField] float speed = 0.1f;
+    [SerializeField] float staticTime = 0.5f;
     Image image;
 
     private void Awake()
@@ -30,7 +31,7 @@ public class ImageColorLerp : MonoBehaviour
             image.color = Color.Lerp(image.color, lerpColors[currentColorIndex], time);
 
             time += Time.deltaTime * speed;
-            if (time >= 1)
+            if (time >= staticTime)
             {
                 time = 0;
                 currentColorIndex = (currentColorIndex + 1) % lerpColors.Length;
