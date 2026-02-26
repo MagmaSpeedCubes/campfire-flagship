@@ -386,6 +386,7 @@ MonoBehaviour:
   NextPositionBarcode: 49000061062
   SelectBarcode: 889392021394
   LastPositionBarcode: 49000072303
+  resetBarcode: 28400090858
   LoadedMinigames: []
   SelectedIndex: 0
 --- !u!4 &307233144
